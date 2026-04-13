@@ -86,8 +86,43 @@
       "slug": "windows-11",
       "name": "Windows 11",
       "category": "desktop-os",
-      "status": "pending",
-      "description": "Microsoft's flagship desktop OS, integrated with Microsoft accounts, Store and cloud services."
+      "auditedVersion": "25H2",
+      "auditedAt": "2026-04-13",
+      "rubricVersion": "1.0",
+      "scores": {
+        "generalPurposeComputing": 70,
+        "freedom": 8,
+        "privacy": 18,
+        "transparency": 12,
+        "interoperability": 55,
+        "neutrality": 18,
+        "portability": 55
+      },
+      "overall": 33,
+      "grade": "D",
+      "summary": "Microsoft's flagship desktop OS, ubiquitous on consumer and enterprise PCs and built around a Microsoft-account-centric experience. Windows 11 preserves the historic strengths of the PC — running arbitrary code, wide hardware support, openly documented Win32 APIs — but tightens the setup path to require a Microsoft account, enforces a minimum telemetry level that cannot be fully disabled on Home and Pro, and pre-installs heavy vendor steering toward Edge, Bing and OneDrive. Proprietary license and closed source drive the low marks on freedom and transparency.",
+      "highlights": [
+        "Runs arbitrary executable code natively; no OS-level app-store exclusivity.",
+        "Win32 API surface is documented and used by decades of third-party software.",
+        "Secure Boot can be disabled in UEFI firmware by the device owner.",
+        "Administrator access and an unrestricted shell are available by default."
+      ],
+      "concerns": [
+        "Home and Pro editions cannot disable Windows diagnostic data entirely; \"Required\" is the minimum and default.",
+        "Initial setup of Windows 11 Home and Pro requires an internet connection and a Microsoft account.",
+        "Microsoft actively removes documented methods to bypass the Microsoft-account requirement during setup.",
+        "Proprietary, closed-source license; the OS cannot be built from source or forked.",
+        "Default installation includes vendor apps (Edge, Bing, OneDrive, Teams, Xbox) with visible steering in Start menu and Settings.",
+        "Installation requires TPM 2.0 and UEFI Secure Boot-capable hardware, excluding many older PCs from supported upgrades."
+      ],
+      "evidence": [
+        { "factor": "generalPurposeComputing", "url": "https://support.microsoft.com/en-us/windows/windows-11-system-requirements-86c11283-ea52-4782-9efd-7674389a7ba3", "note": "TPM 2.0 and UEFI Secure Boot required" },
+        { "factor": "privacy", "url": "https://learn.microsoft.com/en-us/windows/privacy/configure-windows-diagnostic-data-in-your-organization", "note": "Diagnostic data off only on Enterprise/Education" },
+        { "factor": "privacy", "url": "https://support.microsoft.com/en-us/windows/windows-11-system-requirements-86c11283-ea52-4782-9efd-7674389a7ba3", "note": "Microsoft account and internet required at setup" },
+        { "factor": "interoperability", "url": "https://learn.microsoft.com/en-us/windows/win32/", "note": "Win32 API publicly documented" },
+        { "factor": "neutrality", "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-blocks-more-tricks-to-skip-microsoft-account-setup-in-windows-11/", "note": "Microsoft removing local-account bypass methods" },
+        { "factor": "portability", "url": "https://support.microsoft.com/en-us/windows/windows-11-system-requirements-86c11283-ea52-4782-9efd-7674389a7ba3", "note": "Strict hardware requirements exclude older PCs" }
+      ]
     },
     {
       "slug": "macos-sequoia",
