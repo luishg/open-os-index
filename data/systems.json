@@ -149,8 +149,44 @@
       "slug": "fedora-workstation",
       "name": "Fedora Workstation",
       "category": "desktop-os",
-      "status": "pending",
-      "description": "Red Hat-sponsored, community-governed Linux distribution with a leading-edge release cadence."
+      "auditedVersion": "43",
+      "auditedAt": "2026-04-13",
+      "rubricVersion": "1.0",
+      "scores": {
+        "generalPurposeComputing": 92,
+        "freedom": 88,
+        "privacy": 88,
+        "transparency": 82,
+        "interoperability": 88,
+        "neutrality": 88,
+        "portability": 75
+      },
+      "overall": 87,
+      "grade": "A",
+      "summary": "A Red Hat-sponsored, community-governed Linux distribution with a leading-edge release cadence and a strict free-software orientation. Fedora Workstation ships with no default telemetry, no forced accounts, a fully user-controlled bootloader and sudo, and an open build infrastructure on Koji. The score is pulled down modestly by a Secure Boot chain that relies on the Microsoft-signed Shim and by a narrower architecture breadth than fully community-governed distributions.",
+      "highlights": [
+        "Fully free and open-source by design; third-party proprietary repositories are off by default.",
+        "No default telemetry; optional metrics are opt-in and off until the user explicitly enables them.",
+        "No user account or internet connection is required to install; installation works offline.",
+        "Root access via sudo is available from first login for the installing user.",
+        "Every package is built on the public Koji infrastructure from publicly available source RPMs.",
+        "GNOME Software treats Flathub and Fedora RPM repositories as equal sources, without vendor steering."
+      ],
+      "concerns": [
+        "Secure Boot relies on the Microsoft-signed Shim bootloader; replacing the trust chain with user-owned keys is possible but not straightforward.",
+        "Official architecture support (x86_64 and aarch64) is narrower than fully community-governed distributions.",
+        "Red Hat (IBM) corporate sponsorship shapes roadmap prioritisation, though governance sits with the Fedora Council."
+      ],
+      "evidence": [
+        { "factor": "generalPurposeComputing", "url": "https://fedoraproject.org/", "note": "User-controlled GRUB2 and sudo; standard Linux model" },
+        { "factor": "freedom", "url": "https://fedoraproject.org/", "note": "Described as 100% Free and Open Source" },
+        { "factor": "freedom", "url": "https://fedoraproject.org/wiki/Licensing", "note": "All packages must meet Fedora licensing guidelines" },
+        { "factor": "privacy", "url": "https://fedoraproject.org/wiki/Changes/Telemetry", "note": "Opt-in metrics, off by default at setup" },
+        { "factor": "transparency", "url": "https://koji.fedoraproject.org/koji/", "note": "Public package build system and logs" },
+        { "factor": "interoperability", "url": "https://fedoraproject.org/", "note": "Standard Linux stack; Flatpak and RPM integration" },
+        { "factor": "neutrality", "url": "https://fedoraproject.org/workstation/", "note": "GNOME default; no preinstalled ads or vendor steering" },
+        { "factor": "portability", "url": "https://fedoraproject.org/", "note": "Official Workstation builds for x86_64 and aarch64" }
+      ]
     },
     {
       "slug": "arch-linux",

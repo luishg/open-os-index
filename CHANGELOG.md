@@ -18,6 +18,7 @@ Scopes:
 
 ## 2026
 
+- 2026-04-13 — audit(fedora-workstation): initial v43, grade A, overall 87.
 - 2026-04-13 — audit(windows-11): initial v25H2, grade D, overall 33.
 - 2026-04-13 — audit(grapheneos): initial v2026020400, grade A, overall 88.
 - 2026-04-13 — chore: AUDIT.md rewritten for Claude Code agents — tool-specific calls (Read/Edit/Bash/WebSearch/WebFetch), typed source buckets, compact dimension probes, Edit templates for pending→audited promotion, automated validation steps and a self-review checklist.
