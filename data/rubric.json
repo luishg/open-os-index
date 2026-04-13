@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "dimensions": [
+    { "id": "generalPurposeComputing", "label": "General-Purpose Computing", "weight": 20, "short": "GPC" },
+    { "id": "freedom",                 "label": "Degree of Freedom",         "weight": 20, "short": "Freedom" },
+    { "id": "privacy",                 "label": "Privacy",                   "weight": 15, "short": "Privacy" },
+    { "id": "transparency",            "label": "Transparency",              "weight": 15, "short": "Transparency" },
+    { "id": "interoperability",        "label": "Interoperability",          "weight": 12, "short": "Interop" },
+    { "id": "neutrality",              "label": "Neutrality",                "weight": 10, "short": "Neutrality" },
+    { "id": "portability",             "label": "Portability",               "weight":  8, "short": "Portability" }
+  ],
+  "grades": [
+    { "grade": "S", "min": 90, "label": "Absolute Sovereignty" },
+    { "grade": "A", "min": 75, "label": "High Sovereignty" },
+    { "grade": "B", "min": 60, "label": "Functional Sovereignty" },
+    { "grade": "C", "min": 40, "label": "Controlled Environment" },
+    { "grade": "D", "min": 20, "label": "Walled Garden" },
+    { "grade": "F", "min":  0, "label": "Hostile" }
+  ],
+  "categories": [
+    { "id": "mobile-os",  "label": "Mobile OS" },
+    { "id": "desktop-os", "label": "Desktop OS" }
+  ]
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open-OS Index — Sovereignty Grades for Operating Systems</title>
+  <meta name="description" content="Public ranking of operating systems scored on user sovereignty, neutrality and general-purpose computing. Every grade is evidenced, versioned and challengeable." />
+  <meta name="theme-color" content="#0b0d12" />
+
+  <meta property="og:title" content="Open-OS Index" />
+  <meta property="og:description" content="Sovereignty grades for operating systems. Evidenced. Versioned. Public." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://index.open-os.com" />
+
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0d12'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Georgia,serif' font-size='42' fill='%23f5f1e8'%3EO%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <span class="brand-mark">O</span>
+        <span class="brand-name">Open-OS&nbsp;Index</span>
+      </a>
+      <nav class="site-nav">
+        <a href="https://github.com/luishg/open-os-index/blob/main/RUBRIC.md">Rubric</a>
+        <a href="https://github.com/luishg/open-os-index/blob/main/AUDIT.md">How&nbsp;audits&nbsp;work</a>
+        <a href="https://github.com/luishg/open-os-index/blob/main/DISCLAIMER.md">Disclaimer</a>
+        <a href="https://github.com/luishg/open-os-index" class="nav-repo">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <h1>Sovereignty grades for operating systems.</h1>
+      <p class="lede">
+        A public ranking of operating systems scored on user sovereignty, neutrality and general-purpose computing.
+        Every grade is evidenced, versioned and challengeable.
+      </p>
+      <p class="meta">
+        <span id="rubric-version-badge">Rubric v—</span>
+        <span class="dot">·</span>
+        <span id="updated-at-badge">Last updated —</span>
+        <span class="dot">·</span>
+        <a href="https://github.com/luishg/open-os-index/blob/main/DISCLAIMER.md">This is not a legal certification</a>
+      </p>
+    </section>
+
+    <section class="controls wrap" aria-label="Filters">
+      <label>
+        <span>Category</span>
+        <select id="filter-category">
+          <option value="">All</option>
+        </select>
+      </label>
+      <label>
+        <span>Grade</span>
+        <select id="filter-grade">
+          <option value="">All</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="ranking wrap" aria-live="polite">
+      <div id="status" class="status"></div>
+      <ol id="ranking-list" class="ranking-list"></ol>
+    </section>
+
+    <section class="methodology wrap">
+      <h2>How it works</h2>
+      <p>
+        Each operating system is scored <strong>0–100 on seven weighted dimensions</strong>. The overall score is a weighted average
+        that maps to a grade from <strong>S</strong> (Absolute Sovereignty) down to <strong>F</strong> (Hostile).
+      </p>
+      <p>
+        The rubric is public and versioned. Every score links to evidence. Anyone can challenge a verdict by opening an issue or a pull request.
+      </p>
+      <div class="methodology-links">
+        <a href="https://github.com/luishg/open-os-index/blob/main/RUBRIC.md">Read the rubric →</a>
+        <a href="https://github.com/luishg/open-os-index/blob/main/AUDIT.md">How audits are run →</a>
+        <a href="https://github.com/luishg/open-os-index/issues/new">Challenge a score →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>
+        Open-OS Index ·
+        <a href="https://github.com/luishg/open-os-index">source on GitHub</a> ·
+        content under <a href="https://creativecommons.org/licenses/by/4.0/">CC&nbsp;BY&nbsp;4.0</a>,
+        code under <a href="https://github.com/luishg/open-os-index/blob/main/LICENSE">MIT</a>.
+      </p>
+      <p class="small">
+        Grades reflect adherence to a public rubric, not a legal or industry certification. See the
+        <a href="https://github.com/luishg/open-os-index/blob/main/DISCLAIMER.md">disclaimer</a>.
+      </p>
+    </div>
+  </footer>
+
+  <template id="tpl-row">
+    <li class="row">
+      <button class="row-head" aria-expanded="false">
+        <span class="col-rank"></span>
+        <span class="col-name">
+          <strong class="name"></strong>
+          <span class="category"></span>
+        </span>
+        <span class="col-grade">
+          <span class="grade-pill"></span>
+        </span>
+        <span class="col-score">
+          <span class="score-num"></span>
+          <span class="score-label">/ 100</span>
+        </span>
+        <span class="col-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="row-body" hidden>
+        <p class="summary"></p>
+        <div class="factors"></div>
+        <div class="lists">
+          <div class="list-highlights">
+            <h4>Highlights</h4>
+            <ul></ul>
+          </div>
+          <div class="list-concerns">
+            <h4>Concerns</h4>
+            <ul></ul>
+          </div>
+        </div>
+        <div class="evidence">
+          <h4>Evidence</h4>
+          <ul></ul>
+        </div>
+        <p class="audit-meta small"></p>
+      </div>
+    </li>
+  </template>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
