@@ -162,15 +162,100 @@
       "slug": "harmonyos",
       "name": "HarmonyOS",
       "category": "mobile-os",
-      "status": "pending",
-      "description": "Huawei's mobile operating system, shipped on Huawei and Honor devices with an independent app ecosystem distinct from Google Play and the App Store."
+      "auditedVersion": "5.0",
+      "auditedAt": "2026-04-13",
+      "rubricVersion": "2.0",
+      "scores": {
+        "ownerAuthority": 8,
+        "softwareFreedom": 15,
+        "privacy": 15,
+        "transparency": 10,
+        "developerAutonomy": 18,
+        "appDistributionFreedom": 10,
+        "deviceNeutrality": 10,
+        "interoperability": 30,
+        "portability": 8
+      },
+      "overall": 13,
+      "grade": "F",
+      "summary": "Huawei's proprietary mobile operating system, built on the open-source OpenHarmony foundation but shipped as a fully closed commercial product on Huawei devices in the Chinese market. HarmonyOS NEXT (5.0) abandoned AOSP and Android app compatibility in favor of a native HarmonyOS ecosystem centered on AppGallery and Huawei Mobile Services. The OS scores very low across sovereignty and ecosystem freedom dimensions due to a permanently locked bootloader, closed-source proprietary codebase, mandatory Huawei ID with real-name authentication, no consumer sideloading of apps, and deep integration of Huawei first-party services with no documented path to full replacement.",
+      "highlights": [
+        "OpenHarmony upstream is open source under Apache 2.0, governed by the OpenAtom Foundation.",
+        "POSIX compatibility layer enables some cross-platform interoperability for developers.",
+        "Developer account registration for AppGallery Connect appears to be free, unlike Apple's $99/yr program.",
+        "Star Shield security architecture provides structured permission controls and encrypted sharing."
+      ],
+      "concerns": [
+        "Huawei closed its official bootloader unlock service in 2018; no unlock path exists for HarmonyOS NEXT devices.",
+        "HarmonyOS NEXT is fully proprietary and closed-source; the consumer OS cannot be built from source or redistributed.",
+        "No consumer sideloading of HAP packages; AppGallery is the sole distribution channel for end users.",
+        "Huawei ID with real-name authentication is required for device setup and app installation in the Chinese market.",
+        "Default browser, search, cloud, assistant (Celia), and maps are all Huawei services with no documented full replacement path.",
+        "Runs exclusively on Huawei-branded hardware; not installable on third-party devices."
+      ],
+      "evidence": [
+        { "factor": "ownerAuthority", "url": "https://consumer.huawei.com/en/community/details/topicId-41529/", "note": "Huawei ceased bootloader unlock codes in 2018" },
+        { "factor": "ownerAuthority", "url": "https://promon.io/security-news/harmonyos-next", "note": "No known root or bootloader unlock for NEXT" },
+        { "factor": "softwareFreedom", "url": "https://en.wikipedia.org/wiki/OpenHarmony", "note": "OpenHarmony is Apache 2.0 under OpenAtom Foundation" },
+        { "factor": "softwareFreedom", "url": "https://en.wikipedia.org/wiki/HarmonyOS_5", "note": "HarmonyOS NEXT is proprietary built on OpenHarmony" },
+        { "factor": "transparency", "url": "https://en.wikipedia.org/wiki/OpenHarmony", "note": "OpenHarmony source public on GitCode since 2025" },
+        { "factor": "developerAutonomy", "url": "https://developer.huawei.com/consumer/en/appgallery/", "note": "AppGallery requires developer registration and review" },
+        { "factor": "appDistributionFreedom", "url": "https://www.gizmochina.com/2024/05/19/huawei-harmonyos-next-follows-apples-lead-with-internal-app-distribution/", "note": "Enterprise-only internal distribution like Apple model" },
+        { "factor": "deviceNeutrality", "url": "https://en.wikipedia.org/wiki/HarmonyOS", "note": "Celia, AppGallery, HMS Core as default services" },
+        { "factor": "interoperability", "url": "https://developer.huawei.com/consumer/en/harmonyos/develop/", "note": "POSIX layer and documented API levels 12-18" },
+        { "factor": "portability", "url": "https://en.wikipedia.org/wiki/HarmonyOS_5", "note": "Runs on Mate 70/80, Pura, nova Huawei devices only" }
+      ]
     },
     {
       "slug": "lineageos",
       "name": "LineageOS",
       "category": "mobile-os",
-      "status": "pending",
-      "description": "Community-maintained Android distribution that extends the life of devices beyond their vendor end-of-support."
+      "auditedVersion": "23.2",
+      "auditedAt": "2026-04-13",
+      "rubricVersion": "2.0",
+      "scores": {
+        "ownerAuthority": 72,
+        "softwareFreedom": 90,
+        "privacy": 82,
+        "transparency": 62,
+        "developerAutonomy": 95,
+        "appDistributionFreedom": 90,
+        "deviceNeutrality": 88,
+        "interoperability": 78,
+        "portability": 88
+      },
+      "overall": 84,
+      "grade": "A",
+      "summary": "A community-maintained, fully open-source Android distribution that ships without Google Mobile Services by default and supports hundreds of devices across multiple vendors. LineageOS scores strongly on software freedom, developer autonomy, and app distribution freedom, with all source publicly available under Apache 2.0 and no OS-vendor gatekeeping of app installation. The main limitations are the lack of first-class bootloader re-lock with custom verified-boot keys and the absence of reproducible builds or formal security audits.",
+      "highlights": [
+        "Fully open-source under Apache 2.0; all code public on GitHub and Gerrit with documented per-device build instructions.",
+        "No Google apps or services by default; no mandatory telemetry; device statistics are opt-in only.",
+        "APK installation unrestricted with no OS-vendor notarisation, developer account, or fees required.",
+        "Officially supports devices from Pixel, OnePlus, Xiaomi, Samsung, Motorola, Fairphone, Nothing, and other vendors.",
+        "All default apps (launcher, browser, dialer, contacts) are replaceable with no vendor steering or UI nudges.",
+        "Trust interface centralises privacy and security settings for user visibility."
+      ],
+      "concerns": [
+        "Bootloader re-lock with custom verified-boot keys is not a documented first-class feature; LineageOS FAQ warns against relocking on most devices.",
+        "Proprietary vendor blobs (modem, firmware, HALs) are required for hardware support and cannot be audited.",
+        "No reproducible build infrastructure and no formal third-party security audit of LineageOS specifically.",
+        "Root access is not available by default; users must flash a separate tool such as Magisk."
+      ],
+      "evidence": [
+        { "factor": "ownerAuthority", "url": "https://wiki.lineageos.org/faq", "note": "FAQ warns against relocking; bootloader unlock required" },
+        { "factor": "ownerAuthority", "url": "https://lineageos.org/engineering/Qualcomm-Firmware/", "note": "Engineering post on firmware chain of trust" },
+        { "factor": "softwareFreedom", "url": "https://github.com/LineageOS/android", "note": "Public source manifest repo; Apache 2.0 licensed" },
+        { "factor": "softwareFreedom", "url": "https://wiki.lineageos.org/devices/bacon/build/", "note": "Per-device build-from-source instructions on wiki" },
+        { "factor": "privacy", "url": "https://lineageos.org/legal/", "note": "Opt-in device statistics; anonymised ID resets on wipe" },
+        { "factor": "privacy", "url": "https://wiki.lineageos.org/gapps/", "note": "Google apps are optional, not included by default" },
+        { "factor": "transparency", "url": "https://review.lineageos.org/", "note": "Public Gerrit code review for all changes" },
+        { "factor": "transparency", "url": "https://lineageos.org/Changelog-31/", "note": "Technical changelogs describe actual code changes" },
+        { "factor": "developerAutonomy", "url": "https://wiki.lineageos.org/faq", "note": "No OS-vendor notarisation or app approval required" },
+        { "factor": "appDistributionFreedom", "url": "https://wiki.lineageos.org/gapps/", "note": "No Play Protect; third-party stores work natively" },
+        { "factor": "deviceNeutrality", "url": "https://lineageos.org/Trust-me/", "note": "Trust interface; all default apps are replaceable" },
+        { "factor": "interoperability", "url": "https://github.com/LineageOS/android", "note": "Full AOSP API compatibility; open Android SDK" },
+        { "factor": "portability", "url": "https://wiki.lineageos.org/devices/", "note": "Hundreds of supported devices across many vendors" }
+      ]
     },
     {
       "slug": "windows-11",
@@ -275,15 +360,104 @@
       "slug": "chromeos",
       "name": "ChromeOS",
       "category": "desktop-os",
-      "status": "pending",
-      "description": "Google's cloud-first desktop OS, centered on Chrome, Google services and managed devices."
+      "auditedVersion": "146",
+      "auditedAt": "2026-04-13",
+      "rubricVersion": "2.0",
+      "scores": {
+        "ownerAuthority": 20,
+        "softwareFreedom": 30,
+        "privacy": 15,
+        "transparency": 35,
+        "developerAutonomy": 35,
+        "appDistributionFreedom": 25,
+        "deviceNeutrality": 12,
+        "interoperability": 55,
+        "portability": 8
+      },
+      "overall": 26,
+      "grade": "D",
+      "summary": "Google's cloud-first desktop operating system, shipped on Google-certified Chromebook hardware and centered on the Chrome browser and Google account ecosystem. ChromeOS scores respectably on web-standards interoperability thanks to its Chromium base, but the mandatory Google account for setup, irremovable Chrome browser as the sole system web handler, Google-gated app distribution through the Chrome Web Store and Play Store, and restriction to certified hardware produce a low sovereignty score. Developer Mode provides an escape hatch for advanced users but wipes user data on entry and displays a persistent warning screen.",
+      "highlights": [
+        "ChromiumOS upstream is open-source under a BSD-style license with public source and a documented build-from-source path.",
+        "Developer Mode grants root shell access and permits booting non-Google-signed images on owned hardware.",
+        "Linux on ChromeOS (Crostini) provides a Debian container where users can install arbitrary Linux software without Play Store or Web Store gating.",
+        "Strong web-standards compliance via the Chromium engine; documented extension and Android APIs available to developers."
+      ],
+      "concerns": [
+        "Google account is effectively required for device setup; Guest mode is severely limited and does not persist data.",
+        "Chrome cannot be removed or replaced as the system browser; all system-level web links route exclusively through Chrome.",
+        "Developer Mode wipes all user data on entry and displays an 'OS verification is OFF' warning on every boot; no custom verified-boot keys without defeating hardware write protection.",
+        "Primary app distribution channels (Chrome Web Store, Google Play Store) are Google-gated; Android APK sideloading requires enabling Linux or Developer Mode.",
+        "ChromeOS runs only on Google-certified Chromebook hardware; ChromeOS Flex for generic x86 PCs is a separate product."
+      ],
+      "evidence": [
+        { "factor": "ownerAuthority", "url": "https://www.chromium.org/chromium-os/developer-library/guides/device/developer-mode/", "note": "Developer Mode entry wipes data, shows warning each boot" },
+        { "factor": "ownerAuthority", "url": "https://www.chromium.org/chromium-os/chromiumos-design-docs/verified-boot/", "note": "Verified Boot uses Google root-of-trust; no user keys" },
+        { "factor": "softwareFreedom", "url": "https://www.chromium.org/chromium-os/licensing/", "note": "ChromiumOS packages use BSD-Google and FOSS licenses" },
+        { "factor": "softwareFreedom", "url": "https://www.chromium.org/chromium-os/developer-library/guides/development/developer-guide/", "note": "ChromiumOS developer guide for building from source" },
+        { "factor": "privacy", "url": "https://support.google.com/chromebook/answer/1047362?hl=en", "note": "Chromebook setup requires Google account sign-in" },
+        { "factor": "privacy", "url": "https://www.google.com/chrome/privacy/whitepaper.html", "note": "Chrome Privacy Whitepaper describes data collection" },
+        { "factor": "transparency", "url": "https://support.google.com/chrome/a/answer/7679408?hl=en&co=CHROME_ENTERPRISE._Product%3DChromeOS", "note": "ChromeOS enterprise release notes published per version" },
+        { "factor": "developerAutonomy", "url": "https://chromeos.dev/en/linux", "note": "Linux on ChromeOS allows unrestricted app installs in container" },
+        { "factor": "appDistributionFreedom", "url": "https://support.google.com/chromebook/answer/7021273?hl=en", "note": "Android apps install via Play Store on supported models" },
+        { "factor": "deviceNeutrality", "url": "https://support.google.com/chromebook/answer/3296214?hl=en-GB", "note": "Chrome is the integrated browser; cannot be replaced" },
+        { "factor": "interoperability", "url": "https://developer.chrome.com/release-notes/146", "note": "Chrome 146 release notes document web platform APIs" },
+        { "factor": "portability", "url": "https://chromeos.google/products/chromeos-flex/", "note": "ChromeOS Flex is separate; ChromeOS requires Chromebooks" }
+      ]
     },
     {
       "slug": "ubuntu",
       "name": "Ubuntu",
       "category": "desktop-os",
-      "status": "pending",
-      "description": "Canonical-backed Linux distribution, among the most widely used desktop Linux platforms, with commercial support and the Snap packaging ecosystem."
+      "auditedVersion": "24.04 LTS",
+      "auditedAt": "2026-04-13",
+      "rubricVersion": "2.0",
+      "scores": {
+        "ownerAuthority": 85,
+        "softwareFreedom": 75,
+        "privacy": 78,
+        "transparency": 72,
+        "developerAutonomy": 88,
+        "appDistributionFreedom": 78,
+        "deviceNeutrality": 72,
+        "interoperability": 88,
+        "portability": 90
+      },
+      "overall": 81,
+      "grade": "A",
+      "summary": "A Canonical-backed, Debian-derived Linux distribution and one of the most widely used desktop Linux platforms. Ubuntu ships a FOSS core with user-controlled boot, root access, opt-in telemetry, and no required vendor account, scoring well on owner sovereignty and developer autonomy. Scores are moderated by the proprietary Snap Store backend, Firefox and Chromium being distributed exclusively as Snaps in official repositories, Ubuntu Pro upsell messages in apt and MOTD, and Flathub not being pre-configured by default.",
+      "highlights": [
+        "GRUB is user-controlled; MokManager allows enrollment of custom Secure Boot keys alongside the Microsoft-signed Shim chain.",
+        "Main and Universe repositories are entirely free software under DFSG-aligned licenses; source available via apt and Launchpad.",
+        "Telemetry via ubuntu-report is opt-in during installation; no vendor account is required for install or daily use.",
+        "Developers can distribute .deb packages, PPAs, Flatpaks, or AppImages without OS-vendor notarisation or fees.",
+        "Six supported architectures (amd64, arm64, armhf, ppc64el, riscv64, s390x) with no hardware-ID binding or activation system.",
+        "All packages are built on the public Launchpad build infrastructure with per-package changelogs and security advisories."
+      ],
+      "concerns": [
+        "The Snap Store server backend is proprietary and operated exclusively by Canonical; no federated or self-hosted alternative is officially supported.",
+        "Firefox and Chromium are distributed only as Snaps in official Ubuntu repositories since 22.04; the .deb package is a wrapper that installs the Snap.",
+        "Ubuntu Pro upsell messages appear in apt output and MOTD on LTS systems via the pre-installed ubuntu-advantage-tools package.",
+        "Flathub is not pre-configured by default; the Snap Store is the privileged app distribution channel.",
+        "The Restricted repository, enabled by default, contains non-free firmware and drivers."
+      ],
+      "evidence": [
+        { "factor": "ownerAuthority", "url": "https://documentation.ubuntu.com/security/security-features/platform-protections/secure-boot/", "note": "Shim, GRUB, and MokManager key enrollment documented" },
+        { "factor": "ownerAuthority", "url": "https://wiki.ubuntu.com/UEFI/SecureBoot", "note": "Secure Boot architecture and user key management" },
+        { "factor": "softwareFreedom", "url": "https://help.ubuntu.com/community/Repositories/Ubuntu", "note": "Main is free software; Multiverse is non-free opt-in" },
+        { "factor": "softwareFreedom", "url": "https://documentation.ubuntu.com/project/how-ubuntu-is-made/concepts/launchpad/", "note": "Source packages built publicly on Launchpad" },
+        { "factor": "privacy", "url": "https://ubuntu.com/blog/tag/telemetry", "note": "Ubuntu telemetry is opt-in; no mandatory collection" },
+        { "factor": "privacy", "url": "https://documentation.ubuntu.com/pro-client/en/latest/explanations/apt_messages/", "note": "Ubuntu Pro apt messages and how to disable them" },
+        { "factor": "transparency", "url": "https://documentation.ubuntu.com/project/how-ubuntu-is-made/concepts/launchpad/", "note": "Public build infrastructure on Launchpad" },
+        { "factor": "transparency", "url": "https://ubuntu.com/security/notices", "note": "Public security advisories with CVE references" },
+        { "factor": "developerAutonomy", "url": "https://snapcraft.io/docs/creating-your-developer-account/", "note": "Free Ubuntu One account for Snap publishing" },
+        { "factor": "developerAutonomy", "url": "https://snapcraft.io/about", "note": "Snap publishing is free with no mandatory fees" },
+        { "factor": "appDistributionFreedom", "url": "https://bugs.launchpad.net/ubuntu/+source/firefox/+bug/1962021", "note": "Firefox .deb replaced by snap-installing wrapper" },
+        { "factor": "appDistributionFreedom", "url": "https://www.theregister.com/2023/11/10/snap_without_ubuntu_tools/", "note": "Snap Store backend is proprietary; workarounds exist" },
+        { "factor": "deviceNeutrality", "url": "https://documentation.ubuntu.com/pro-client/en/latest/explanations/apt_messages/", "note": "Ubuntu Pro upsell in apt and MOTD on LTS systems" },
+        { "factor": "interoperability", "url": "https://documentation.ubuntu.com/release-notes/24.04/", "note": "Ubuntu 24.04 LTS release notes and documented APIs" },
+        { "factor": "portability", "url": "https://documentation.ubuntu.com/project/how-ubuntu-is-made/concepts/supported-architectures/", "note": "Six architectures: amd64, arm64, armhf, ppc64el, riscv64, s390x" }
+      ]
     },
     {
       "slug": "fedora-workstation",
@@ -336,8 +510,51 @@
       "slug": "arch-linux",
       "name": "Arch Linux",
       "category": "desktop-os",
-      "status": "pending",
-      "description": "Rolling-release, minimalist Linux distribution configured entirely by the user."
+      "auditedVersion": "2026.04.01",
+      "auditedAt": "2026-04-13",
+      "rubricVersion": "2.0",
+      "scores": {
+        "ownerAuthority": 95,
+        "softwareFreedom": 82,
+        "privacy": 95,
+        "transparency": 80,
+        "developerAutonomy": 97,
+        "appDistributionFreedom": 97,
+        "deviceNeutrality": 95,
+        "interoperability": 85,
+        "portability": 45
+      },
+      "overall": 88,
+      "grade": "A",
+      "summary": "A community-governed, rolling-release Linux distribution in which the user assembles the entire system from the ground up. Arch Linux scores near the top of the rubric on owner authority, privacy, developer autonomy, app distribution freedom, and device neutrality because it ships no telemetry, requires no accounts, imposes no vendor approval on software distribution, and treats all package sources equally. The score is held back by the inclusion of some proprietary packages in the official repositories (unlike strictly FOSS-only distributions) and by official support limited to x86_64 alone.",
+      "highlights": [
+        "No telemetry, no vendor account, no internet connection required to install; pkgstats is a separate opt-in package.",
+        "Full root access from the start; user chooses bootloader, kernel, init, and every component.",
+        "AUR allows any user to publish build scripts; makepkg builds from source without OS-vendor approval or fees.",
+        "No scare dialogs, no sideloading terminology, no capability degradation for software installed outside official repos.",
+        "Arch Build System and all PKGBUILDs are publicly hosted on GitLab; every official package is buildable from source.",
+        "Secure Boot configurable with user-enrolled keys via sbctl or manual MOK enrollment."
+      ],
+      "concerns": [
+        "Official repositories include some proprietary packages (e.g., NVIDIA drivers, firmware blobs); Arch is pragmatic, not strictly FOSS-only.",
+        "Only x86_64 is officially supported; Arch Linux ARM is a separate, unofficial project.",
+        "Reproducible builds are not systematically verified; no project-wide reproducibility infrastructure exists.",
+        "Secure Boot out of the box requires the Microsoft-signed shim or user key enrollment; no turnkey solution."
+      ],
+      "evidence": [
+        { "factor": "ownerAuthority", "url": "https://wiki.archlinux.org/title/Installation_guide", "note": "User installs bootloader, kernel, root access from start" },
+        { "factor": "ownerAuthority", "url": "https://wiki.archlinux.org/title/Secure_Boot", "note": "Secure Boot with user-enrolled keys via sbctl" },
+        { "factor": "softwareFreedom", "url": "https://wiki.archlinux.org/title/Arch_Linux", "note": "Pragmatic; some non-free packages in official repos" },
+        { "factor": "softwareFreedom", "url": "https://wiki.archlinux.org/title/Arch_build_system", "note": "All official PKGBUILDs public; build from source" },
+        { "factor": "privacy", "url": "https://terms.archlinux.org/docs/privacy-policy/", "note": "No OS-level telemetry; pkgstats is opt-in" },
+        { "factor": "transparency", "url": "https://gitlab.archlinux.org/archlinux/packaging/packages", "note": "All packaging sources hosted on public GitLab" },
+        { "factor": "developerAutonomy", "url": "https://wiki.archlinux.org/title/Arch_User_Repository", "note": "Any user can submit PKGBUILDs; no approval gate" },
+        { "factor": "developerAutonomy", "url": "https://wiki.archlinux.org/title/makepkg", "note": "Build and distribute packages without vendor signing" },
+        { "factor": "appDistributionFreedom", "url": "https://wiki.archlinux.org/title/Pacman", "note": "No scare dialogs; all repos treated equally" },
+        { "factor": "deviceNeutrality", "url": "https://wiki.archlinux.org/title/General_recommendations", "note": "No defaults; user selects every component" },
+        { "factor": "interoperability", "url": "https://archlinux.org/packages/", "note": "Standard Linux stack; open formats throughout" },
+        { "factor": "portability", "url": "https://wiki.archlinux.org/title/Frequently_asked_questions", "note": "Only x86_64 officially supported" }
+      ]
     },
     {
       "slug": "debian-stable",

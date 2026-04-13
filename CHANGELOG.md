@@ -18,6 +18,11 @@ Scopes:
 
 ## 2026
 
+- 2026-04-13 — audit(harmonyos): initial v5.0, grade F, overall 13.
+- 2026-04-13 — audit(chromeos): initial v146, grade D, overall 26.
+- 2026-04-13 — audit(ubuntu): initial v24.04 LTS, grade A, overall 81.
+- 2026-04-13 — audit(lineageos): initial v23.2, grade A, overall 84.
+- 2026-04-13 — audit(arch-linux): initial v2026.04.01, grade A, overall 88.
 - 2026-04-13 — audit(macos-tahoe): initial v26, grade D, overall 39. Slug renamed from `macos-sequoia` (current shipping macOS is Tahoe, v26).
 - 2026-04-13 — audit(ios): initial v26, grade F, overall 15.
 - 2026-04-13 — audit(android-stock-pixel): initial v16, grade C, overall 41.
