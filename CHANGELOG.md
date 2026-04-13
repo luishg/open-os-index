@@ -18,5 +18,6 @@ Scopes:
 
 ## 2026
 
+- 2026-04-13 — data: refined initial list — removed CalyxOS, added HarmonyOS (mobile) and Ubuntu (desktop); 13 total (6 mobile + 7 desktop).
 - 2026-04-13 — site: new tagline "The Freedom Index for Operating Systems"; added `pending` status support in data and UI; seeded 12 popular operating systems as pending audits; reframed disclaimer as "how to read a grade".
 - 2026-04-13 — chore: initial repository scaffold — rubric v1.0, empty systems database, static site, agent audit protocol.

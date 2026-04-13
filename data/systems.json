@@ -32,11 +32,11 @@
       "description": "Samsung's Android skin on Galaxy devices, layering Samsung services on top of the Google stack."
     },
     {
-      "slug": "calyxos",
-      "name": "CalyxOS",
+      "slug": "harmonyos",
+      "name": "HarmonyOS",
       "category": "mobile-os",
       "status": "pending",
-      "description": "Degoogled Android fork focused on privacy and microG compatibility, targeting Pixel and a small set of supported devices."
+      "description": "Huawei's mobile operating system, shipped on Huawei and Honor devices with an independent app ecosystem distinct from Google Play and the App Store."
     },
     {
       "slug": "lineageos",
@@ -65,6 +65,13 @@
       "category": "desktop-os",
       "status": "pending",
       "description": "Google's cloud-first desktop OS, centered on Chrome, Google services and managed devices."
+    },
+    {
+      "slug": "ubuntu",
+      "name": "Ubuntu",
+      "category": "desktop-os",
+      "status": "pending",
+      "description": "Canonical-backed Linux distribution, among the most widely used desktop Linux platforms, with commercial support and the Snap packaging ecosystem."
     },
     {
       "slug": "fedora-workstation",
