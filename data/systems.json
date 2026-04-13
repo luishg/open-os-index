@@ -55,15 +55,101 @@
       "slug": "ios",
       "name": "iOS",
       "category": "mobile-os",
-      "status": "pending",
-      "description": "Apple's proprietary mobile OS, shipped exclusively on iPhone hardware and distributed through the App Store."
+      "auditedVersion": "26",
+      "auditedAt": "2026-04-13",
+      "rubricVersion": "2.0",
+      "scores": {
+        "ownerAuthority": 10,
+        "softwareFreedom": 5,
+        "privacy": 52,
+        "transparency": 15,
+        "developerAutonomy": 8,
+        "appDistributionFreedom": 5,
+        "deviceNeutrality": 12,
+        "interoperability": 30,
+        "portability": 5
+      },
+      "overall": 15,
+      "grade": "F",
+      "summary": "Apple's proprietary mobile operating system, shipped exclusively on iPhone hardware. iOS scores well on user-facing privacy controls such as App Tracking Transparency and opt-in analytics, but scores very low across ecosystem freedom and owner sovereignty dimensions due to a fused bootloader, closed-source codebase, mandatory App Store distribution (outside the EU), mandatory developer enrollment and code signing, App Review content gating, and a WebKit-only browser engine mandate outside the EU.",
+      "highlights": [
+        "App Tracking Transparency requires apps to obtain user permission before tracking across apps and websites.",
+        "Analytics and diagnostics sharing is opt-in during device setup, not enabled by default.",
+        "Security updates are delivered promptly with public CVE disclosures.",
+        "End-to-end encryption available for iMessage and optional Advanced Data Protection for iCloud."
+      ],
+      "concerns": [
+        "Bootloader is fused; no user-accessible unlock, root, or custom verified-boot key path.",
+        "Fully proprietary, closed-source OS; modification and redistribution prohibited by license.",
+        "App Store is the sole distribution channel globally; EU DMA alternative marketplaces still require Apple notarisation and fees.",
+        "Apple Developer Program enrollment ($99/yr), code signing, and App Review are mandatory for all distribution.",
+        "WebKit-only browser engine mandate applies globally outside the EU; alternative engines permitted only in EU since iOS 17.4.",
+        "NFC payment access restricted to Apple Pay globally; third-party HCE access opened only in the EU under DMA.",
+        "iOS runs exclusively on Apple-designed iPhone hardware; no portability to other devices."
+      ],
+      "evidence": [
+        { "factor": "ownerAuthority", "url": "https://www.apple.com/legal/sla/", "note": "Proprietary license; no modification or reverse engineering" },
+        { "factor": "softwareFreedom", "url": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/", "note": "Licensed Application EULA prohibits redistribution" },
+        { "factor": "privacy", "url": "https://support.apple.com/en-us/108971", "note": "Analytics sharing is opt-in during setup" },
+        { "factor": "privacy", "url": "https://www.apple.com/privacy/control/", "note": "App Tracking Transparency and privacy controls" },
+        { "factor": "transparency", "url": "https://www.apple.com/legal/privacy/data/en/device-analytics/", "note": "Device analytics data types disclosed" },
+        { "factor": "developerAutonomy", "url": "https://developer.apple.com/support/terms/apple-developer-program-license-agreement/", "note": "Developer Program enrollment and code signing required" },
+        { "factor": "developerAutonomy", "url": "https://developer.apple.com/support/core-technology-fee/", "note": "Core Technology Fee of EUR 0.50 per install in EU" },
+        { "factor": "appDistributionFreedom", "url": "https://developer.apple.com/app-store/review/guidelines/", "note": "App Review gates all App Store distribution" },
+        { "factor": "appDistributionFreedom", "url": "https://developer.apple.com/support/alternative-app-marketplace-in-the-eu/", "note": "EU alt-marketplaces require Apple notarisation" },
+        { "factor": "deviceNeutrality", "url": "https://developer.apple.com/support/dma-and-apps-in-the-eu/", "note": "WebKit-only mandate lifted only in EU since iOS 17.4" }
+      ]
     },
     {
       "slug": "android-stock-pixel",
       "name": "Android (Stock on Pixel)",
       "category": "mobile-os",
-      "status": "pending",
-      "description": "AOSP with Google Mobile Services, as shipped on Google's Pixel hardware."
+      "auditedVersion": "16",
+      "auditedAt": "2026-04-13",
+      "rubricVersion": "2.0",
+      "scores": {
+        "ownerAuthority": 45,
+        "softwareFreedom": 35,
+        "privacy": 30,
+        "transparency": 35,
+        "developerAutonomy": 55,
+        "appDistributionFreedom": 40,
+        "deviceNeutrality": 35,
+        "interoperability": 60,
+        "portability": 20
+      },
+      "overall": 41,
+      "grade": "C",
+      "summary": "Google's flagship Android experience on Pixel hardware, shipping Android 16 with the full Google Mobile Services suite. The OS permits bootloader unlocking and APK installation from third-party sources, but layers significant friction through Play Protect warnings, Play Integrity attestation, and pre-installed Google apps that cannot be fully uninstalled. Privacy defaults favor data collection, and core GMS components are closed-source despite the AOSP base being Apache 2.0 licensed.",
+      "highlights": [
+        "Bootloader can be unlocked via Developer Options and fastboot on most Pixel models.",
+        "AOSP base is Apache 2.0 licensed with source publicly available and buildable.",
+        "Developers can distribute APKs directly to users without OS-level notarization or approval.",
+        "Default browser, keyboard, launcher, and most default apps can be replaced by the user.",
+        "Monthly Android Security Bulletins provide transparent disclosure of patched vulnerabilities.",
+        "Google Takeout allows export of account data in standard formats."
+      ],
+      "concerns": [
+        "Google Mobile Services (Play Services, Play Store, Chrome, Gmail, YouTube, Maps, Drive, Photos) are closed-source and pre-installed; most cannot be fully uninstalled, only disabled.",
+        "Play Protect uses loaded terminology ('harmful app', 'blocked by Play Protect') and enhanced fraud protection to discourage or block installs from outside Google Play in 185 markets.",
+        "Play Integrity API enables app developers to detect and block sideloaded copies via remediation dialogs that redirect users to Google Play.",
+        "Telemetry data is transmitted before device setup completes; usage and diagnostics collection is opt-out rather than opt-in.",
+        "Bootloader unlock wipes all data and causes Play Integrity to report a non-standard device state, which can break banking and other attestation-dependent apps.",
+        "Pixel hardware is the only supported target for this OS configuration, limiting portability."
+      ],
+      "evidence": [
+        { "factor": "ownerAuthority", "url": "https://source.android.com/docs/core/architecture/bootloader/locking_unlocking", "note": "Bootloader unlock via fastboot on Android devices" },
+        { "factor": "softwareFreedom", "url": "https://source.android.com/docs/setup/about/faqs", "note": "AOSP licensed under Apache 2.0; GMS is proprietary" },
+        { "factor": "softwareFreedom", "url": "https://source.android.com/docs/setup/about", "note": "AOSP source publicly available and buildable" },
+        { "factor": "privacy", "url": "https://support.google.com/pixelphone/answer/14116441", "note": "Pixel usage and diagnostics sharing settings" },
+        { "factor": "transparency", "url": "https://source.android.com/docs/security/features/verifiedboot", "note": "Verified Boot chain-of-trust documentation" },
+        { "factor": "developerAutonomy", "url": "https://developer.android.com/google/play/integrity/verdicts", "note": "Play Integrity verdicts flag sideloaded apps" },
+        { "factor": "appDistributionFreedom", "url": "https://support.google.com/android/answer/7664951", "note": "Play Protect scans and warns on non-Play installs" },
+        { "factor": "appDistributionFreedom", "url": "https://security.googleblog.com/2026/02/keeping-google-play-android-app-ecosystem-safe-2025.html", "note": "Enhanced fraud protection expanded to 185 markets" },
+        { "factor": "deviceNeutrality", "url": "https://www.android.com/choicescreen/dma/", "note": "DMA browser and search choice screen in EEA" },
+        { "factor": "deviceNeutrality", "url": "https://support.google.com/pixelphone/answer/13627571", "note": "Pre-installed system apps can be disabled, not removed" },
+        { "factor": "interoperability", "url": "https://source.android.com/docs/setup/about", "note": "Documented public APIs via Android SDK" }
+      ]
     },
     {
       "slug": "samsung-one-ui",
@@ -134,11 +220,56 @@
       ]
     },
     {
-      "slug": "macos-sequoia",
-      "name": "macOS Sequoia",
+      "slug": "macos-tahoe",
+      "name": "macOS Tahoe",
       "category": "desktop-os",
-      "status": "pending",
-      "description": "Apple's desktop OS for Mac hardware, integrated with iCloud and the Mac App Store."
+      "auditedVersion": "26",
+      "auditedAt": "2026-04-13",
+      "rubricVersion": "2.0",
+      "scores": {
+        "ownerAuthority": 50,
+        "softwareFreedom": 15,
+        "privacy": 62,
+        "transparency": 20,
+        "developerAutonomy": 40,
+        "appDistributionFreedom": 45,
+        "deviceNeutrality": 40,
+        "interoperability": 55,
+        "portability": 8
+      },
+      "overall": 39,
+      "grade": "D",
+      "summary": "Apple's proprietary desktop operating system, shipped exclusively on Apple-branded hardware and integrated with iCloud and the Mac App Store. macOS Tahoe preserves meaningful owner authority through Recovery-accessible security downgrades and a real Unix shell, and its privacy posture is above average with opt-in analytics and no mandatory telemetry baseline. However, the proprietary license prohibiting redistribution and non-Apple hardware installation, mandatory notarisation for frictionless app distribution, heavy first-party service steering, and strict hardware binding produce a low overall sovereignty score.",
+      "highlights": [
+        "Permissive Security mode in Recovery allows disabling SIP, loading third-party kexts, and booting custom XNU kernels on Apple Silicon.",
+        "Analytics and diagnostics sharing is opt-in; no mandatory telemetry baseline unlike some competing desktop operating systems.",
+        "Darwin kernel (XNU) and core userland components are published as open source under the Apple Public Source License.",
+        "Third-party browser engines (Gecko, Blink) run natively on macOS, unlike iOS which mandates WebKit.",
+        "Default browser and default email client are user-replaceable through System Settings.",
+        "App Tracking Transparency framework requires apps to request permission before tracking across apps and websites."
+      ],
+      "concerns": [
+        "EULA prohibits installation on non-Apple-branded hardware, redistribution, and derivative works, binding the OS to a single vendor's hardware.",
+        "Notarisation via the Apple Developer Program ($99/year) is effectively required for frictionless distribution outside the Mac App Store; Apple can revoke Developer ID certificates.",
+        "Gatekeeper displays scare dialogs for unnotarised software stating Apple could not verify it is free of malware, creating friction for legitimate non-notarised apps.",
+        "Spotlight, Siri, Finder, and iCloud are deeply integrated with no full replacement path; iCloud is enabled by default for several features.",
+        "No reproducible builds, no public build infrastructure, and XNU source releases are published with variable delays after OS release."
+      ],
+      "evidence": [
+        { "factor": "ownerAuthority", "url": "https://support.apple.com/guide/security/startup-disk-security-policy-control-sec7d92dc49f/web", "note": "Permissive Security allows custom kernels and SIP disable" },
+        { "factor": "ownerAuthority", "url": "https://developer.apple.com/documentation/security/disabling-and-enabling-system-integrity-protection", "note": "SIP can be disabled via csrutil in Recovery" },
+        { "factor": "softwareFreedom", "url": "https://opensource.apple.com/releases/", "note": "Darwin and XNU source published under APSL" },
+        { "factor": "softwareFreedom", "url": "https://www.apple.com/legal/sla/docs/macOSTahoe.pdf", "note": "EULA prohibits non-Apple hardware and redistribution" },
+        { "factor": "privacy", "url": "https://support.apple.com/en-gb/guide/mac-help/mh27990/mac", "note": "Analytics sharing is opt-in via Privacy settings" },
+        { "factor": "privacy", "url": "https://www.apple.com/legal/privacy/en-ww/", "note": "Apple privacy policy describes data handling practices" },
+        { "factor": "transparency", "url": "https://support.apple.com/en-us/100100", "note": "Security release notes published per update" },
+        { "factor": "developerAutonomy", "url": "https://developer.apple.com/documentation/security/notarizing-macos-software-before-distribution", "note": "Notarisation required for Developer ID distribution" },
+        { "factor": "developerAutonomy", "url": "https://developer.apple.com/support/compare-memberships/", "note": "Developer Program costs $99/year for signing" },
+        { "factor": "appDistributionFreedom", "url": "https://support.apple.com/en-us/102362", "note": "Users can change default browser and email app" },
+        { "factor": "deviceNeutrality", "url": "https://www.apple.com/os/macos/", "note": "macOS Tahoe product page showing integrated services" },
+        { "factor": "interoperability", "url": "https://developer.apple.com/documentation/macos-release-notes/macos-26-release-notes", "note": "macOS 26 release notes and documented APIs" },
+        { "factor": "portability", "url": "https://www.apple.com/legal/sla/docs/macOSTahoe.pdf", "note": "License restricts installation to Apple hardware only" }
+      ]
     },
     {
       "slug": "chromeos",

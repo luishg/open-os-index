@@ -18,6 +18,9 @@ Scopes:
 
 ## 2026
 
+- 2026-04-13 — audit(macos-tahoe): initial v26, grade D, overall 39. Slug renamed from `macos-sequoia` (current shipping macOS is Tahoe, v26).
+- 2026-04-13 — audit(ios): initial v26, grade F, overall 15.
+- 2026-04-13 — audit(android-stock-pixel): initial v16, grade C, overall 41.
 - 2026-04-13 — audit(fedora-workstation): update v43 against rubric v2.0, grade A (was A), overall 89 (was 87).
 - 2026-04-13 — audit(windows-11): update v25H2 against rubric v2.0, grade C (was D), overall 41 (was 33).
 - 2026-04-13 — audit(grapheneos): update v2026020400 against rubric v2.0, grade A (was A), overall 89 (was 88).
