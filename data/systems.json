@@ -2,5 +2,90 @@
   "version": 1,
   "rubricVersion": "1.0",
   "updatedAt": "2026-04-13",
-  "systems": []
+  "systems": [
+    {
+      "slug": "grapheneos",
+      "name": "GrapheneOS",
+      "category": "mobile-os",
+      "status": "pending",
+      "description": "Privacy- and security-hardened Android distribution for Pixel devices, built to minimize attack surface and telemetry."
+    },
+    {
+      "slug": "ios",
+      "name": "iOS",
+      "category": "mobile-os",
+      "status": "pending",
+      "description": "Apple's proprietary mobile OS, shipped exclusively on iPhone hardware and distributed through the App Store."
+    },
+    {
+      "slug": "android-stock-pixel",
+      "name": "Android (Stock on Pixel)",
+      "category": "mobile-os",
+      "status": "pending",
+      "description": "AOSP with Google Mobile Services, as shipped on Google's Pixel hardware."
+    },
+    {
+      "slug": "samsung-one-ui",
+      "name": "Samsung One UI",
+      "category": "mobile-os",
+      "status": "pending",
+      "description": "Samsung's Android skin on Galaxy devices, layering Samsung services on top of the Google stack."
+    },
+    {
+      "slug": "calyxos",
+      "name": "CalyxOS",
+      "category": "mobile-os",
+      "status": "pending",
+      "description": "Degoogled Android fork focused on privacy and microG compatibility, targeting Pixel and a small set of supported devices."
+    },
+    {
+      "slug": "lineageos",
+      "name": "LineageOS",
+      "category": "mobile-os",
+      "status": "pending",
+      "description": "Community-maintained Android distribution that extends the life of devices beyond their vendor end-of-support."
+    },
+    {
+      "slug": "windows-11",
+      "name": "Windows 11",
+      "category": "desktop-os",
+      "status": "pending",
+      "description": "Microsoft's flagship desktop OS, integrated with Microsoft accounts, Store and cloud services."
+    },
+    {
+      "slug": "macos-sequoia",
+      "name": "macOS Sequoia",
+      "category": "desktop-os",
+      "status": "pending",
+      "description": "Apple's desktop OS for Mac hardware, integrated with iCloud and the Mac App Store."
+    },
+    {
+      "slug": "chromeos",
+      "name": "ChromeOS",
+      "category": "desktop-os",
+      "status": "pending",
+      "description": "Google's cloud-first desktop OS, centered on Chrome, Google services and managed devices."
+    },
+    {
+      "slug": "fedora-workstation",
+      "name": "Fedora Workstation",
+      "category": "desktop-os",
+      "status": "pending",
+      "description": "Red Hat-sponsored, community-governed Linux distribution with a leading-edge release cadence."
+    },
+    {
+      "slug": "arch-linux",
+      "name": "Arch Linux",
+      "category": "desktop-os",
+      "status": "pending",
+      "description": "Rolling-release, minimalist Linux distribution configured entirely by the user."
+    },
+    {
+      "slug": "debian-stable",
+      "name": "Debian Stable",
+      "category": "desktop-os",
+      "status": "pending",
+      "description": "Long-running, community-governed Linux distribution known for its conservative release policy and the Debian Free Software Guidelines."
+    }
+  ]
 }

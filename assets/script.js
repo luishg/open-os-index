@@ -12,6 +12,7 @@
     filterGrade: document.getElementById("filter-grade"),
     rubricBadge: document.getElementById("rubric-version-badge"),
     updatedBadge: document.getElementById("updated-at-badge"),
+    countsBadge: document.getElementById("counts-badge"),
     tpl: document.getElementById("tpl-row"),
   };
 
@@ -28,7 +29,6 @@
   }
 
   function gradeFor(score, grades) {
-    // grades are sorted high→low by min; pick first match.
     const sorted = [...grades].sort((a, b) => b.min - a.min);
     return sorted.find((g) => score >= g.min) || sorted[sorted.length - 1];
   }
@@ -40,6 +40,10 @@
       sum += v * d.weight;
     }
     return Math.round(sum / 100);
+  }
+
+  function isPending(system) {
+    return system.status === "pending";
   }
 
   function populateFilters() {
@@ -59,6 +63,11 @@
       els.filterGrade.appendChild(opt);
     }
 
+    const pendingOpt = document.createElement("option");
+    pendingOpt.value = "pending";
+    pendingOpt.textContent = "Pending audit";
+    els.filterGrade.appendChild(pendingOpt);
+
     els.filterCategory.addEventListener("change", (e) => {
       state.filters.category = e.target.value;
       render();
@@ -72,14 +81,60 @@
   function applyFilters(systems) {
     return systems.filter((s) => {
       if (state.filters.category && s.category !== state.filters.category) return false;
-      if (state.filters.grade && s.grade !== state.filters.grade) return false;
+      if (state.filters.grade) {
+        if (state.filters.grade === "pending" && !isPending(s)) return false;
+        if (state.filters.grade !== "pending" && (isPending(s) || s.grade !== state.filters.grade)) return false;
+      }
       return true;
     });
   }
 
-  function renderRow(system, rank) {
+  function renderPendingRow(system) {
     const frag = els.tpl.content.cloneNode(true);
     const row = frag.querySelector(".row");
+    const head = frag.querySelector(".row-head");
+    const body = frag.querySelector(".row-body");
+
+    row.classList.add("pending");
+
+    frag.querySelector(".col-rank").textContent = "—";
+    frag.querySelector(".name").textContent = system.name;
+
+    const catLabel =
+      (state.rubric.categories || []).find((c) => c.id === system.category)?.label ||
+      system.category ||
+      "";
+    frag.querySelector(".category").textContent = catLabel;
+
+    const gradePill = frag.querySelector(".grade-pill");
+    gradePill.textContent = "Pending";
+    gradePill.dataset.grade = "pending";
+
+    frag.querySelector(".col-score").innerHTML = '<span class="score-num">—</span>';
+
+    // Body: only description + audit queue note
+    frag.querySelector(".factors").remove();
+    frag.querySelector(".lists").remove();
+    frag.querySelector(".evidence").remove();
+
+    frag.querySelector(".summary").textContent =
+      system.description || "This system is in the audit queue.";
+
+    frag.querySelector(".audit-meta").innerHTML =
+      'In the audit queue · scoring will appear here once audited · ' +
+      '<a href="https://github.com/luishg/open-os-index/blob/main/AUDIT.md">see the audit protocol</a>';
+
+    head.addEventListener("click", () => {
+      const open = head.getAttribute("aria-expanded") === "true";
+      head.setAttribute("aria-expanded", open ? "false" : "true");
+      body.hidden = open;
+    });
+
+    return frag;
+  }
+
+  function renderAuditedRow(system, rank) {
+    const frag = els.tpl.content.cloneNode(true);
     const head = frag.querySelector(".row-head");
     const body = frag.querySelector(".row-body");
 
@@ -98,7 +153,6 @@
 
     frag.querySelector(".score-num").textContent = system.overall;
 
-    // Factors
     const factors = frag.querySelector(".factors");
     for (const d of state.rubric.dimensions) {
       const val =
@@ -113,7 +167,6 @@
       factors.appendChild(factor);
     }
 
-    // Highlights
     const hiUl = frag.querySelector(".list-highlights ul");
     (system.highlights || []).forEach((h) => {
       const li = document.createElement("li");
@@ -124,7 +177,6 @@
       frag.querySelector(".list-highlights").remove();
     }
 
-    // Concerns
     const coUl = frag.querySelector(".list-concerns ul");
     (system.concerns || []).forEach((c) => {
       const li = document.createElement("li");
@@ -135,10 +187,8 @@
       frag.querySelector(".list-concerns").remove();
     }
 
-    // Summary
     frag.querySelector(".summary").textContent = system.summary || "";
 
-    // Evidence
     const evUl = frag.querySelector(".evidence ul");
     (system.evidence || []).forEach((e) => {
       const li = document.createElement("li");
@@ -153,14 +203,12 @@
       frag.querySelector(".evidence").remove();
     }
 
-    // Audit meta
     const meta = [];
     if (system.auditedVersion) meta.push("Version " + system.auditedVersion);
     if (system.auditedAt) meta.push("Audited " + system.auditedAt);
     if (system.rubricVersion) meta.push("Rubric v" + system.rubricVersion);
     frag.querySelector(".audit-meta").textContent = meta.join(" · ");
 
-    // Toggle
     head.addEventListener("click", () => {
       const open = head.getAttribute("aria-expanded") === "true";
       head.setAttribute("aria-expanded", open ? "false" : "true");
@@ -170,24 +218,46 @@
     return frag;
   }
 
+  function insertDivider(label) {
+    const li = document.createElement("li");
+    li.className = "row-divider";
+    li.innerHTML = `<span>${escapeHtml(label)}</span>`;
+    els.list.appendChild(li);
+  }
+
   function render() {
     const filtered = applyFilters(state.systems);
-    const sorted = [...filtered].sort((a, b) => (b.overall || 0) - (a.overall || 0));
+
+    const audited = filtered
+      .filter((s) => !isPending(s))
+      .sort((a, b) => (b.overall || 0) - (a.overall || 0));
+
+    const pending = filtered
+      .filter(isPending)
+      .sort((a, b) => a.name.localeCompare(b.name));
 
     els.list.innerHTML = "";
 
-    if (!sorted.length) {
-      els.status.textContent = state.systems.length
-        ? "No systems match the current filters."
-        : "No audits yet. The first systems will appear here shortly.";
+    if (!audited.length && !pending.length) {
+      els.status.textContent = "No systems match the current filters.";
       els.status.classList.remove("error");
       return;
     }
-
     els.status.textContent = "";
-    sorted.forEach((sys, i) => {
-      els.list.appendChild(renderRow(sys, i + 1));
-    });
+
+    if (audited.length) {
+      insertDivider("Audited · ranked by overall score");
+      audited.forEach((sys, i) => {
+        els.list.appendChild(renderAuditedRow(sys, i + 1));
+      });
+    }
+
+    if (pending.length) {
+      insertDivider("Pending audit · scoring in the queue");
+      pending.forEach((sys) => {
+        els.list.appendChild(renderPendingRow(sys));
+      });
+    }
   }
 
   function escapeHtml(s) {
@@ -211,8 +281,8 @@
       ]);
       state.rubric = rubric;
 
-      // Ensure each system has a grade + overall derived from rubric if missing.
       state.systems = (data.systems || []).map((s) => {
+        if (isPending(s)) return s;
         const overall =
           typeof s.overall === "number"
             ? s.overall
@@ -223,6 +293,12 @@
 
       els.rubricBadge.textContent = "Rubric v" + rubric.version;
       els.updatedBadge.textContent = "Last updated " + (data.updatedAt || "—");
+
+      const total = state.systems.length;
+      const auditedCount = state.systems.filter((s) => !isPending(s)).length;
+      const pendingCount = total - auditedCount;
+      els.countsBadge.textContent =
+        `${total} systems · ${auditedCount} audited · ${pendingCount} pending`;
 
       populateFilters();
       render();

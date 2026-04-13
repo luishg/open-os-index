@@ -94,11 +94,20 @@ a:hover { text-decoration: underline; }
   padding: 60px 24px 28px;
 }
 
+.hero .eyebrow {
+  color: var(--fg-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin: 0 0 10px;
+}
+
 .hero h1 {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  line-height: 1.15;
-  margin: 0 0 14px;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.9rem, 4.4vw, 3rem);
+  line-height: 1.1;
+  margin: 0 0 16px;
+  letter-spacing: -0.015em;
+  font-weight: 700;
 }
 
 .hero .lede {
@@ -176,6 +185,40 @@ a:hover { text-decoration: underline; }
   overflow: hidden;
 }
 
+.row.pending {
+  background: transparent;
+  border-style: dashed;
+}
+
+.row.pending .name {
+  color: var(--fg-muted);
+  font-weight: 500;
+}
+
+.row.pending .col-rank,
+.row.pending .col-score .score-num {
+  color: var(--fg-dim);
+}
+
+.row-divider {
+  list-style: none;
+  margin: 22px 0 4px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--fg-dim);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.row-divider::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--border);
+}
+.ranking-list > .row-divider:first-child { margin-top: 0; }
+
 .row-head {
   display: grid;
   grid-template-columns: 52px 1fr 90px 110px 28px;
@@ -231,6 +274,21 @@ a:hover { text-decoration: underline; }
 .grade-pill[data-grade="C"] { background: var(--grade-c); }
 .grade-pill[data-grade="D"] { background: var(--grade-d); color: var(--fg); }
 .grade-pill[data-grade="F"] { background: var(--grade-f); color: var(--fg); }
+
+.grade-pill[data-grade="pending"] {
+  width: auto;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--fg-dim);
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 1px var(--border);
+}
 
 .col-score {
   text-align: right;

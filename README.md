@@ -1,12 +1,12 @@
-# Open-OS Index
+# Open-OS Index — The Freedom Index for Operating Systems
 
-Public ranking of operating systems scored on how well they respect **user sovereignty**, **neutrality** and **general-purpose computing**.
+A public ranking that **certifies** how well each operating system respects **user sovereignty**, **neutrality** and **general-purpose computing**.
 
 🌐 Live site: [index.open-os.com](https://index.open-os.com)
 
 ## What this is
 
-A transparent, agent-maintainable ranking. Every operating system in the list is scored against a public rubric, and every score links to evidence. The grade is an opinion expressed against a standard, not a legal or industry certification.
+A transparent, agent-maintainable ranking. Every operating system is scored against a public rubric, and every score links to evidence. Grades follow a versioned standard and can be challenged via Pull Request.
 
 ## Structure
 
