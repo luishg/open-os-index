@@ -7,8 +7,45 @@
       "slug": "grapheneos",
       "name": "GrapheneOS",
       "category": "mobile-os",
-      "status": "pending",
-      "description": "Privacy- and security-hardened Android distribution for Pixel devices, built to minimize attack surface and telemetry."
+      "auditedVersion": "2026020400",
+      "auditedAt": "2026-04-13",
+      "rubricVersion": "1.0",
+      "scores": {
+        "generalPurposeComputing": 95,
+        "freedom": 92,
+        "privacy": 96,
+        "transparency": 88,
+        "interoperability": 78,
+        "neutrality": 98,
+        "portability": 45
+      },
+      "overall": 88,
+      "grade": "A",
+      "summary": "A privacy- and security-hardened Android distribution officially supported on Google Pixel devices. GrapheneOS ships with no Google apps or telemetry by default, offers sandboxed Google Play as an optional compatibility layer, and uniquely lets the owner re-lock the bootloader with their own signing key. Portability is limited by design to the Pixel line.",
+      "highlights": [
+        "Bootloader re-lockable with a custom verified-boot key — owner retains full control after flashing.",
+        "No Google apps, services or telemetry by default; connectivity checks point to GrapheneOS-run servers or can be disabled.",
+        "Network permission toggle denies any app direct and indirect network access.",
+        "Fully open source under a permissive license; all code hosted publicly on GitHub.",
+        "Reproducible builds documented against the AOSP build system.",
+        "Sandboxed Google Play compatibility layer runs Play Services as an unprivileged, user-installable app."
+      ],
+      "concerns": [
+        "Official production builds are limited to a narrow range of Pixel devices.",
+        "Root shell is not available by default, by design — may not suit some power-user workflows.",
+        "Release binaries are signed with private keys, so bit-for-bit reproducibility requires comparing unsigned outputs."
+      ],
+      "evidence": [
+        { "factor": "generalPurposeComputing", "url": "https://grapheneos.org/install/web", "note": "Bootloader unlock and re-lock with custom key" },
+        { "factor": "freedom", "url": "https://grapheneos.org/source", "note": "Open-source project with code on GitHub" },
+        { "factor": "freedom", "url": "https://github.com/GrapheneOS", "note": "Public source repositories" },
+        { "factor": "privacy", "url": "https://grapheneos.org/features", "note": "Connectivity checks via GrapheneOS servers by default" },
+        { "factor": "privacy", "url": "https://grapheneos.org/faq", "note": "No Google services by default; sandboxed Play optional" },
+        { "factor": "transparency", "url": "https://grapheneos.org/build", "note": "Reproducible build documentation" },
+        { "factor": "interoperability", "url": "https://grapheneos.org/faq", "note": "Sandboxed Play services compatibility layer" },
+        { "factor": "neutrality", "url": "https://grapheneos.org/features", "note": "No Google apps or services by default" },
+        { "factor": "portability", "url": "https://grapheneos.org/faq", "note": "Officially supports Pixel 6 through Pixel 10 Pro Fold" }
+      ]
     },
     {
       "slug": "ios",
