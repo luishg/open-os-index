@@ -4,25 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Open-OS Index — The Freedom Index for Operating Systems</title>
-  <meta name="description" content="The Open-OS Index is the freedom index for operating systems: a public ranking that certifies how well each OS respects user sovereignty, neutrality and general-purpose computing." />
+  <meta name="description" content="A public ranking that certifies operating systems across nine weighted factors in three axes — owner sovereignty, ecosystem freedom, and technical openness. Every grade is evidenced and reproducible." />
   <meta name="theme-color" content="#0b0d12" />
+  <meta name="color-scheme" content="dark" />
 
   <meta property="og:title" content="Open-OS Index — The Freedom Index for Operating Systems" />
-  <meta property="og:description" content="A public ranking that certifies how well operating systems respect user sovereignty, neutrality and general-purpose computing." />
+  <meta property="og:description" content="A public ranking that certifies operating systems across nine weighted factors in three axes — owner sovereignty, ecosystem freedom, and technical openness." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://index.open-os.com" />
 
   <link rel="stylesheet" href="assets/style.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0d12'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Georgia,serif' font-size='42' fill='%23f5f1e8'%3EO%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0d12'/%3E%3Crect x='7' y='7' width='18' height='18' rx='2' fill='none' stroke='%23f5f1e8' stroke-width='2'/%3E%3C/svg%3E" />
 </head>
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/">
-        <span class="brand-mark">O</span>
-        <span class="brand-name">Open-OS&nbsp;Index</span>
-      </a>
-      <nav class="site-nav">
+      <a class="brand" href="/">Open-OS&nbsp;Index</a>
+      <nav class="site-nav" aria-label="Primary">
         <a href="https://github.com/luishg/open-os-index/blob/main/RUBRIC.md">Rubric</a>
         <a href="https://github.com/luishg/open-os-index/blob/main/AUDIT.md">How&nbsp;audits&nbsp;work</a>
         <a href="https://github.com/luishg/open-os-index/blob/main/DISCLAIMER.md">Disclaimer</a>
@@ -36,14 +34,14 @@
       <p class="eyebrow">The Open-OS Index</p>
       <h1>The Freedom Index<br />for Operating Systems.</h1>
       <p class="lede">
-        A public ranking that certifies how well each operating system respects user sovereignty, neutrality
-        and general-purpose computing. Every grade follows a public rubric, with cited evidence and full history.
+        A public ranking that certifies how operating systems treat the people who own devices, the developers who build software, and the users who install it.
+        Nine weighted factors across three axes — owner sovereignty, ecosystem freedom, technical openness — each grade backed by cited evidence.
       </p>
       <p class="meta">
         <span id="rubric-version-badge">Rubric v—</span>
-        <span class="dot">·</span>
+        <span class="dot" aria-hidden="true">·</span>
         <span id="updated-at-badge">Last updated —</span>
-        <span class="dot">·</span>
+        <span class="dot" aria-hidden="true">·</span>
         <span id="counts-badge">— systems</span>
       </p>
     </section>
@@ -69,16 +67,41 @@
     </section>
 
     <section class="methodology wrap">
-      <h2>How it works</h2>
-      <p>
-        Each operating system is scored <strong>0–100 on seven weighted dimensions</strong>. The overall score is a weighted average
-        that maps to a grade from <strong>S</strong> (Absolute Sovereignty) down to <strong>F</strong> (Hostile).
+      <h2>How the rubric works</h2>
+      <p class="methodology-intro">
+        Each operating system is scored <strong>0–100 on nine weighted factors</strong> organised in three axes. The overall score is a weighted average that maps to a letter grade.
       </p>
-      <p>
-        The rubric is public and versioned. Every score links to evidence. Anyone can challenge a verdict by opening an issue or a pull request.
+
+      <dl class="axes">
+        <div class="axis">
+          <dt>Owner sovereignty <span class="axis-weight">45</span></dt>
+          <dd>Who controls the device, the software running on it, and the data it produces. Covers owner authority, software freedom, privacy, transparency.</dd>
+        </div>
+        <div class="axis">
+          <dt>Ecosystem freedom <span class="axis-weight">40</span></dt>
+          <dd>Whether developers can build and ship — and users can install — without gatekeepers. Covers developer autonomy, app distribution freedom, device neutrality.</dd>
+        </div>
+        <div class="axis">
+          <dt>Technical openness <span class="axis-weight">15</span></dt>
+          <dd>Open formats, documented APIs, portable data, hardware breadth. Covers interoperability and portability.</dd>
+        </div>
+      </dl>
+
+      <ul class="grade-legend" aria-label="Grade bands">
+        <li><span class="legend-chip" data-grade="S">S</span><span>90–100</span></li>
+        <li><span class="legend-chip" data-grade="A">A</span><span>75–89</span></li>
+        <li><span class="legend-chip" data-grade="B">B</span><span>60–74</span></li>
+        <li><span class="legend-chip" data-grade="C">C</span><span>40–59</span></li>
+        <li><span class="legend-chip" data-grade="D">D</span><span>20–39</span></li>
+        <li><span class="legend-chip" data-grade="F">F</span><span>0–19</span></li>
+      </ul>
+
+      <p class="methodology-note">
+        The rubric is public and versioned. Every score links to primary evidence. Anyone can challenge a verdict by opening an issue or pull request on GitHub.
       </p>
+
       <div class="methodology-links">
-        <a href="https://github.com/luishg/open-os-index/blob/main/RUBRIC.md">Read the rubric →</a>
+        <a href="https://github.com/luishg/open-os-index/blob/main/RUBRIC.md">Read the full rubric →</a>
         <a href="https://github.com/luishg/open-os-index/blob/main/AUDIT.md">How audits are run →</a>
         <a href="https://github.com/luishg/open-os-index/issues/new">Challenge a score →</a>
       </div>
@@ -94,7 +117,7 @@
         code under <a href="https://github.com/luishg/open-os-index/blob/main/LICENSE">MIT</a>.
       </p>
       <p class="small">
-        Grades reflect adherence to a public rubric, not a legal or industry certification. See the
+        Grades reflect adherence to a public rubric. See the
         <a href="https://github.com/luishg/open-os-index/blob/main/DISCLAIMER.md">disclaimer</a>.
       </p>
     </div>

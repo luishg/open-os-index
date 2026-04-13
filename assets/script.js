@@ -154,17 +154,39 @@
     frag.querySelector(".score-num").textContent = system.overall;
 
     const factors = frag.querySelector(".factors");
+    const axes = state.rubric.axes || [];
+    // Group dimensions by axis in rubric order
+    const byAxis = {};
     for (const d of state.rubric.dimensions) {
-      const val =
-        typeof system.scores?.[d.id] === "number" ? system.scores[d.id] : 0;
-      const factor = document.createElement("div");
-      factor.className = "factor";
-      factor.innerHTML = `
-        <span class="factor-label">${escapeHtml(d.label)}</span>
-        <span class="factor-value">${val}</span>
-        <span class="factor-bar"><span style="width:${Math.max(0, Math.min(100, val))}%"></span></span>
-      `;
-      factors.appendChild(factor);
+      const key = d.axis || "_other";
+      (byAxis[key] = byAxis[key] || []).push(d);
+    }
+    // Preserve declared axis order; fall back to any "_other" bucket last
+    const axisOrder = [...axes.map(a => a.id), "_other"];
+    for (const axisId of axisOrder) {
+      const group = byAxis[axisId];
+      if (!group || group.length === 0) continue;
+      const axisInfo = axes.find(a => a.id === axisId);
+      const axisBlock = document.createElement("div");
+      axisBlock.className = "factor-axis";
+      const label = axisInfo?.label || "Other";
+      axisBlock.innerHTML = `<h5 class="factor-axis-label">${escapeHtml(label)}</h5>`;
+      const axisGrid = document.createElement("div");
+      axisGrid.className = "factor-axis-grid";
+      for (const d of group) {
+        const val =
+          typeof system.scores?.[d.id] === "number" ? system.scores[d.id] : 0;
+        const factor = document.createElement("div");
+        factor.className = "factor";
+        factor.innerHTML = `
+          <span class="factor-label">${escapeHtml(d.label)}</span>
+          <span class="factor-value">${val}</span>
+          <span class="factor-bar"><span style="width:${Math.max(0, Math.min(100, val))}%"></span></span>
+        `;
+        axisGrid.appendChild(factor);
+      }
+      axisBlock.appendChild(axisGrid);
+      factors.appendChild(axisBlock);
     }
 
     const hiUl = frag.querySelector(".list-highlights ul");
@@ -225,6 +247,15 @@
     els.list.appendChild(li);
   }
 
+  function insertGradeDivider(grade, label) {
+    const li = document.createElement("li");
+    li.className = "row-divider grade-band";
+    li.innerHTML =
+      `<span class="gb-pill" data-grade="${escapeAttr(grade)}">${escapeHtml(grade)}</span>` +
+      `<span class="gb-label">${escapeHtml(label)}</span>`;
+    els.list.appendChild(li);
+  }
+
   function render() {
     const filtered = applyFilters(state.systems);
 
@@ -246,8 +277,13 @@
     els.status.textContent = "";
 
     if (audited.length) {
-      insertDivider("Audited · ranked by overall score");
+      let currentGrade = null;
       audited.forEach((sys, i) => {
+        if (sys.grade !== currentGrade) {
+          currentGrade = sys.grade;
+          const info = (state.rubric.grades || []).find((g) => g.grade === currentGrade);
+          insertGradeDivider(currentGrade, info?.label || "");
+        }
         els.list.appendChild(renderAuditedRow(sys, i + 1));
       });
     }
