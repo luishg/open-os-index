@@ -84,12 +84,14 @@ Example for auditing GrapheneOS:
 
 | Dimension | Question |
 | :--- | :--- |
-| `generalPurposeComputing` | Can the user install arbitrary code and re-lock the bootloader on supported devices? |
-| `freedom` | What is the license? Is source current and buildable? |
+| `ownerAuthority` | Can the user re-lock the bootloader with their own key and control firmware? |
+| `softwareFreedom` | What is the license? Is source current and buildable? |
 | `privacy` | What data leaves the device on first boot; can it be disabled? |
 | `transparency` | Reproducible builds? Public audits? |
+| `developerAutonomy` | Can a developer ship software without OS-vendor approval or fees? |
+| `appDistributionFreedom` | Can users install from any source without friction or scare dialogs? |
+| `deviceNeutrality` | Are third-party apps/services granted parity with first-party? |
 | `interoperability` | Open file formats? Export paths? |
-| `neutrality` | Pre-installed vendor apps/services? Default steering? |
 | `portability` | Supported hardware; hardware binding? |
 
 ### 3.3 Research each dimension
@@ -148,7 +150,9 @@ overall = round( Σ (score[dim] × weight[dim]) / 100 )
 Verify by hand — one bad multiplication will ship. Example for the 7 dimensions:
 
 ```
-overall = round( (gpc*20 + freedom*20 + privacy*15 + transparency*15 + interop*12 + neutrality*10 + portability*8) / 100 )
+overall = round( (ownerAuthority*15 + softwareFreedom*12 + privacy*10 + transparency*8
+                + developerAutonomy*15 + appDistributionFreedom*13 + deviceNeutrality*12
+                + interoperability*8 + portability*7) / 100 )
 ```
 
 Map `overall` to a `grade` using `data/rubric.json.grades` (S ≥ 90, A ≥ 75, B ≥ 60, C ≥ 40, D ≥ 20, F otherwise).
@@ -173,13 +177,13 @@ Overwrite fields in place. Preserve `slug` and `name`.
 
 ---
 
-## 5. Scoring — bands and dimensions
+## 5. Scoring — bands and dimensions (Rubric v2.0)
 
 ### 5.1 Score bands (apply to every dimension)
 
 | Score | Meaning |
 | :---: | :--- |
-| **90–100** | Excellent. Documented, principled, no significant compromise. |
+| **90–100** | Excellent. Principled, documented, no significant compromise. |
 | **70–89** | Strong. Minor issues, acknowledged and bounded. |
 | **50–69** | Mixed. Real trade-offs or partial support. |
 | **30–49** | Weak. User-hostile defaults, limited recourse. |
@@ -187,28 +191,40 @@ Overwrite fields in place. Preserve `slug` and `name`.
 
 ### 5.2 Dimension probe list
 
-Score each dimension holistically after answering these probes. Weights come from `data/rubric.json`.
+The rubric has **9 dimensions across 3 axes** — Owner sovereignty, Ecosystem freedom, Technical openness. Score each dimension holistically after answering its probes. Weights come from `data/rubric.json` (total = 100).
 
-**1. `generalPurposeComputing` · weight 20**
-Bootloader unlockable? Root / admin / unrestricted shell available? Can the owner install arbitrary code? Sideloading native? Hardware attestation gating third-party code?
+#### Axis A — Owner sovereignty
 
-**2. `freedom` · weight 20**
-FOSS license? Source publicly available and current? Build-from-source documented? Modifications & redistribution permitted?
+**1. `ownerAuthority` · weight 15**
+Bootloader unlockable? Root / admin / unrestricted shell available? Firmware accessible? Can the owner install custom verified-boot keys? Does hardware attestation lock the owner out?
 
-**3. `privacy` · weight 15**
-Telemetry off or opt-in? Works with a local account / offline? Data leaving on first boot? E2EE where applicable?
+**2. `softwareFreedom` · weight 12**
+FOSS license? Source publicly available and current? Build-from-source documented? Modifications and redistribution permitted?
 
-**4. `transparency` · weight 15**
-Reproducible builds? Public security audits? Changelogs describe actual changes? Binary ↔ source mapping?
+**3. `privacy` · weight 10**
+Telemetry off or opt-in at first boot? Works without a vendor account? Works without an internet connection at setup? E2EE where applicable? Local-first by default?
 
-**5. `interoperability` · weight 12**
-Open formats by default? Open APIs? Data export? Standards compliance?
+**4. `transparency` · weight 8**
+Reproducible builds? Public security audits or audit history? Changelogs describe actual changes (not marketing)? Binary ↔ source mapping possible?
 
-**6. `neutrality` · weight 10**
-Free of pre-installed ads/bloat? Defaults merit-based? Defaults replaceable? Vendor steering in UI?
+#### Axis B — Ecosystem freedom
 
-**7. `portability` · weight 8**
-CPU architecture breadth? Hardware-ID binding? Reinstall freedom?
+**5. `developerAutonomy` · weight 15**
+Can a developer ship software without OS-vendor permission? Is notarisation / OS-vendor signing required? Is a developer account registration required? Are platform fees mandatory? Can the OS vendor veto app content? Can they revoke distribution rights at will?
+
+**6. `appDistributionFreedom` · weight 13**
+Can users install from any source without artificial friction? Any scare dialogs for non-store installs? Loaded terminology in system UI ("sideload", "jailbreak", "unknown publisher")? Capability degradation for non-store apps? Third-party stores natively supported and equally privileged? Install gating tied to a vendor account?
+
+**7. `deviceNeutrality` · weight 12**
+First-party and third-party apps granted the same APIs and capabilities? Every default app fully replaceable (browser, search, mail, dialer, keyboard, launcher, store)? UI nudges steering users toward vendor services? Engine monocultures (e.g. WebKit-only)? Guaranteed data portability? Third-party peripherals treated on par with first-party?
+
+#### Axis C — Technical openness
+
+**8. `interoperability` · weight 8**
+Open file formats by default? Documented APIs? Portable data export in standards-based formats? Standards compliance?
+
+**9. `portability` · weight 7**
+CPU architecture breadth? Hardware-ID binding? Reinstall freedom across hardware?
 
 ---
 
@@ -239,14 +255,16 @@ Use `Edit`, not `Write`. The file contains many entries; a surgical replacement 
       "category": "mobile-os",
       "auditedVersion": "2025.03",
       "auditedAt": "2026-04-13",
-      "rubricVersion": "1.0",
+      "rubricVersion": "2.0",
       "scores": {
-        "generalPurposeComputing": 95,
-        "freedom": 92,
+        "ownerAuthority": 95,
+        "softwareFreedom": 92,
         "privacy": 95,
         "transparency": 90,
+        "developerAutonomy": 95,
+        "appDistributionFreedom": 93,
+        "deviceNeutrality": 94,
         "interoperability": 80,
-        "neutrality": 100,
         "portability": 60
       },
       "overall": 89,
@@ -337,7 +355,7 @@ Every item must be **YES** before you commit. If any is NO, fix first.
 **Structure**
 - [ ] `data/systems.json` parses as valid JSON.
 - [ ] The audited entry contains exactly these keys: `slug`, `name`, `category`, `auditedVersion`, `auditedAt`, `rubricVersion`, `scores`, `overall`, `grade`, `summary`, `highlights`, `concerns`, `evidence`.
-- [ ] `scores` has all seven factor keys (`generalPurposeComputing`, `freedom`, `privacy`, `transparency`, `interoperability`, `neutrality`, `portability`).
+- [ ] `scores` has all nine factor keys (`ownerAuthority`, `softwareFreedom`, `privacy`, `transparency`, `developerAutonomy`, `appDistributionFreedom`, `deviceNeutrality`, `interoperability`, `portability`).
 - [ ] Each score is an integer in `[0, 100]`.
 - [ ] `grade` is one of `S A B C D F`.
 - [ ] `category` is one of `mobile-os`, `desktop-os`.

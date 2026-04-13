@@ -18,6 +18,10 @@ Scopes:
 
 ## 2026
 
+- 2026-04-13 — audit(fedora-workstation): update v43 against rubric v2.0, grade A (was A), overall 89 (was 87).
+- 2026-04-13 — audit(windows-11): update v25H2 against rubric v2.0, grade C (was D), overall 41 (was 33).
+- 2026-04-13 — audit(grapheneos): update v2026020400 against rubric v2.0, grade A (was A), overall 89 (was 88).
+- 2026-04-13 — rubric: v2.0 bump — 9 dimensions across owner / ecosystem / technical axes; new Developer Autonomy, App Distribution Freedom, Device Neutrality; Owner Authority split from former General-Purpose Computing; weights rebalanced to total 100.
 - 2026-04-13 — audit(fedora-workstation): initial v43, grade A, overall 87.
 - 2026-04-13 — audit(windows-11): initial v25H2, grade D, overall 33.
 - 2026-04-13 — audit(grapheneos): initial v2026020400, grade A, overall 88.

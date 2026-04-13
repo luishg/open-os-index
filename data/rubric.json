@@ -1,13 +1,20 @@
 {
-  "version": "1.0",
+  "version": "2.0",
+  "axes": [
+    { "id": "owner",     "label": "Owner sovereignty",   "description": "Who controls the device, the software running on it, and the data it produces." },
+    { "id": "ecosystem", "label": "Ecosystem freedom",   "description": "Whether developers can build and ship software without gatekeepers, and whether users can install and replace software without artificial friction." },
+    { "id": "technical", "label": "Technical openness",  "description": "Open formats, open APIs, portable data, and hardware breadth." }
+  ],
   "dimensions": [
-    { "id": "generalPurposeComputing", "label": "General-Purpose Computing", "weight": 20, "short": "GPC" },
-    { "id": "freedom",                 "label": "Degree of Freedom",         "weight": 20, "short": "Freedom" },
-    { "id": "privacy",                 "label": "Privacy",                   "weight": 15, "short": "Privacy" },
-    { "id": "transparency",            "label": "Transparency",              "weight": 15, "short": "Transparency" },
-    { "id": "interoperability",        "label": "Interoperability",          "weight": 12, "short": "Interop" },
-    { "id": "neutrality",              "label": "Neutrality",                "weight": 10, "short": "Neutrality" },
-    { "id": "portability",             "label": "Portability",               "weight":  8, "short": "Portability" }
+    { "id": "ownerAuthority",         "label": "Owner Authority",          "weight": 15, "short": "Owner",        "axis": "owner" },
+    { "id": "softwareFreedom",        "label": "Software Freedom",         "weight": 12, "short": "Freedom",      "axis": "owner" },
+    { "id": "privacy",                "label": "Privacy",                  "weight": 10, "short": "Privacy",      "axis": "owner" },
+    { "id": "transparency",           "label": "Transparency",             "weight":  8, "short": "Transparency", "axis": "owner" },
+    { "id": "developerAutonomy",      "label": "Developer Autonomy",       "weight": 15, "short": "Devs",         "axis": "ecosystem" },
+    { "id": "appDistributionFreedom", "label": "App Distribution Freedom", "weight": 13, "short": "Install",      "axis": "ecosystem" },
+    { "id": "deviceNeutrality",       "label": "Device Neutrality",        "weight": 12, "short": "Neutrality",   "axis": "ecosystem" },
+    { "id": "interoperability",       "label": "Interoperability",         "weight":  8, "short": "Interop",      "axis": "technical" },
+    { "id": "portability",            "label": "Portability",              "weight":  7, "short": "Portability",  "axis": "technical" }
   ],
   "grades": [
     { "grade": "S", "min": 90, "label": "Absolute Sovereignty" },

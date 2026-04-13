@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "rubricVersion": "1.0",
+  "rubricVersion": "2.0",
   "updatedAt": "2026-04-13",
   "systems": [
     {
@@ -9,26 +9,28 @@
       "category": "mobile-os",
       "auditedVersion": "2026020400",
       "auditedAt": "2026-04-13",
-      "rubricVersion": "1.0",
+      "rubricVersion": "2.0",
       "scores": {
-        "generalPurposeComputing": 95,
-        "freedom": 92,
+        "ownerAuthority": 95,
+        "softwareFreedom": 92,
         "privacy": 96,
         "transparency": 88,
+        "developerAutonomy": 95,
+        "appDistributionFreedom": 93,
+        "deviceNeutrality": 94,
         "interoperability": 78,
-        "neutrality": 98,
         "portability": 45
       },
-      "overall": 88,
+      "overall": 89,
       "grade": "A",
-      "summary": "A privacy- and security-hardened Android distribution officially supported on Google Pixel devices. GrapheneOS ships with no Google apps or telemetry by default, offers sandboxed Google Play as an optional compatibility layer, and uniquely lets the owner re-lock the bootloader with their own signing key. Portability is limited by design to the Pixel line.",
+      "summary": "A privacy- and security-hardened Android distribution officially supported on Google Pixel devices. GrapheneOS ships with no Google apps or telemetry by default, offers sandboxed Google Play as an optional compatibility layer, and uniquely lets the owner re-lock the bootloader with their own signing key. Developer autonomy and app-distribution freedom are near-ideal — APKs install from any source without OS-vendor approval. Portability is limited by design to the Pixel line.",
       "highlights": [
-        "Bootloader re-lockable with a custom verified-boot key — owner retains full control after flashing.",
+        "Bootloader re-lockable with a custom verified-boot key — the owner retains full control of the trust chain after flashing.",
         "No Google apps, services or telemetry by default; connectivity checks point to GrapheneOS-run servers or can be disabled.",
-        "Network permission toggle denies any app direct and indirect network access.",
-        "Fully open source under a permissive license; all code hosted publicly on GitHub.",
-        "Reproducible builds documented against the AOSP build system.",
-        "Sandboxed Google Play compatibility layer runs Play Services as an unprivileged, user-installable app."
+        "APK installation is unrestricted: no OS-vendor notarisation, no developer account registration required to ship software.",
+        "Sandboxed Google Play compatibility layer runs Play Services as an unprivileged, user-installable app — Google is just another app.",
+        "Network permission toggle denies any app all direct and indirect network access.",
+        "Fully open source under a permissive license; all code hosted publicly on GitHub; reproducible builds documented against the AOSP build system."
       ],
       "concerns": [
         "Official production builds are limited to a narrow range of Pixel devices.",
@@ -36,14 +38,16 @@
         "Release binaries are signed with private keys, so bit-for-bit reproducibility requires comparing unsigned outputs."
       ],
       "evidence": [
-        { "factor": "generalPurposeComputing", "url": "https://grapheneos.org/install/web", "note": "Bootloader unlock and re-lock with custom key" },
-        { "factor": "freedom", "url": "https://grapheneos.org/source", "note": "Open-source project with code on GitHub" },
-        { "factor": "freedom", "url": "https://github.com/GrapheneOS", "note": "Public source repositories" },
+        { "factor": "ownerAuthority", "url": "https://grapheneos.org/install/web", "note": "Bootloader unlock and re-lock with custom key" },
+        { "factor": "softwareFreedom", "url": "https://grapheneos.org/source", "note": "Open-source project with code on GitHub" },
+        { "factor": "softwareFreedom", "url": "https://github.com/GrapheneOS", "note": "Public source repositories" },
         { "factor": "privacy", "url": "https://grapheneos.org/features", "note": "Connectivity checks via GrapheneOS servers by default" },
         { "factor": "privacy", "url": "https://grapheneos.org/faq", "note": "No Google services by default; sandboxed Play optional" },
         { "factor": "transparency", "url": "https://grapheneos.org/build", "note": "Reproducible build documentation" },
+        { "factor": "developerAutonomy", "url": "https://grapheneos.org/faq", "note": "APK install unrestricted; no OS-vendor notarisation" },
+        { "factor": "appDistributionFreedom", "url": "https://grapheneos.org/features", "note": "No Google apps by default; alternative stores supported" },
+        { "factor": "deviceNeutrality", "url": "https://grapheneos.org/features", "note": "Minimal first-party apps; Vanadium replaceable" },
         { "factor": "interoperability", "url": "https://grapheneos.org/faq", "note": "Sandboxed Play services compatibility layer" },
-        { "factor": "neutrality", "url": "https://grapheneos.org/features", "note": "No Google apps or services by default" },
         { "factor": "portability", "url": "https://grapheneos.org/faq", "note": "Officially supports Pixel 6 through Pixel 10 Pro Fold" }
       ]
     },
@@ -88,39 +92,44 @@
       "category": "desktop-os",
       "auditedVersion": "25H2",
       "auditedAt": "2026-04-13",
-      "rubricVersion": "1.0",
+      "rubricVersion": "2.0",
       "scores": {
-        "generalPurposeComputing": 70,
-        "freedom": 8,
+        "ownerAuthority": 60,
+        "softwareFreedom": 8,
         "privacy": 18,
         "transparency": 12,
+        "developerAutonomy": 65,
+        "appDistributionFreedom": 55,
+        "deviceNeutrality": 22,
         "interoperability": 55,
-        "neutrality": 18,
         "portability": 55
       },
-      "overall": 33,
-      "grade": "D",
-      "summary": "Microsoft's flagship desktop OS, ubiquitous on consumer and enterprise PCs and built around a Microsoft-account-centric experience. Windows 11 preserves the historic strengths of the PC — running arbitrary code, wide hardware support, openly documented Win32 APIs — but tightens the setup path to require a Microsoft account, enforces a minimum telemetry level that cannot be fully disabled on Home and Pro, and pre-installs heavy vendor steering toward Edge, Bing and OneDrive. Proprietary license and closed source drive the low marks on freedom and transparency.",
+      "overall": 41,
+      "grade": "C",
+      "summary": "Microsoft's flagship desktop OS, ubiquitous on consumer and enterprise PCs and built around a Microsoft-account-centric experience. Windows 11 preserves the historic strengths of the PC — developers can still ship unsigned executables, users can install from any source — but wraps that permissiveness in aggressive vendor steering, mandatory Microsoft-account setup, and a minimum telemetry level that cannot be disabled on Home or Pro. Proprietary license, closed source and visible steering toward Edge, Bing and OneDrive produce the low marks on freedom, privacy and device neutrality.",
       "highlights": [
-        "Runs arbitrary executable code natively; no OS-level app-store exclusivity.",
-        "Win32 API surface is documented and used by decades of third-party software.",
+        "No mandatory OS-vendor notarisation: unsigned .exe files still run (with a bypassable SmartScreen warning).",
+        "Win32 API surface is documented and open to third-party developers at no cost.",
+        "Third-party app stores and package managers (Chocolatey, Scoop, Winget) work natively.",
         "Secure Boot can be disabled in UEFI firmware by the device owner.",
         "Administrator access and an unrestricted shell are available by default."
       ],
       "concerns": [
         "Home and Pro editions cannot disable Windows diagnostic data entirely; \"Required\" is the minimum and default.",
-        "Initial setup of Windows 11 Home and Pro requires an internet connection and a Microsoft account.",
-        "Microsoft actively removes documented methods to bypass the Microsoft-account requirement during setup.",
+        "Initial setup of Windows 11 Home and Pro requires an internet connection and a Microsoft account; Microsoft is actively removing documented bypasses.",
+        "SmartScreen uses loaded terminology (\"unknown publisher\", \"Windows protected your PC\") to discourage third-party installations.",
+        "Aggressive UI steering: Edge re-nags after default-browser changes; Bing is the default search; OneDrive auto-enrolls.",
         "Proprietary, closed-source license; the OS cannot be built from source or forked.",
-        "Default installation includes vendor apps (Edge, Bing, OneDrive, Teams, Xbox) with visible steering in Start menu and Settings.",
-        "Installation requires TPM 2.0 and UEFI Secure Boot-capable hardware, excluding many older PCs from supported upgrades."
+        "Installation requires TPM 2.0 and UEFI Secure Boot-capable hardware, excluding many older PCs."
       ],
       "evidence": [
-        { "factor": "generalPurposeComputing", "url": "https://support.microsoft.com/en-us/windows/windows-11-system-requirements-86c11283-ea52-4782-9efd-7674389a7ba3", "note": "TPM 2.0 and UEFI Secure Boot required" },
+        { "factor": "ownerAuthority", "url": "https://support.microsoft.com/en-us/windows/windows-11-system-requirements-86c11283-ea52-4782-9efd-7674389a7ba3", "note": "TPM 2.0 and UEFI Secure Boot required" },
         { "factor": "privacy", "url": "https://learn.microsoft.com/en-us/windows/privacy/configure-windows-diagnostic-data-in-your-organization", "note": "Diagnostic data off only on Enterprise/Education" },
         { "factor": "privacy", "url": "https://support.microsoft.com/en-us/windows/windows-11-system-requirements-86c11283-ea52-4782-9efd-7674389a7ba3", "note": "Microsoft account and internet required at setup" },
+        { "factor": "developerAutonomy", "url": "https://learn.microsoft.com/en-us/windows/win32/", "note": "Win32 API open; unsigned executables run" },
+        { "factor": "appDistributionFreedom", "url": "https://learn.microsoft.com/en-us/windows/security/operating-system-security/virus-and-threat-protection/microsoft-defender-smartscreen/", "note": "SmartScreen warns unknown publishers but is bypassable" },
+        { "factor": "deviceNeutrality", "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-blocks-more-tricks-to-skip-microsoft-account-setup-in-windows-11/", "note": "Microsoft removing local-account bypass methods" },
         { "factor": "interoperability", "url": "https://learn.microsoft.com/en-us/windows/win32/", "note": "Win32 API publicly documented" },
-        { "factor": "neutrality", "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-blocks-more-tricks-to-skip-microsoft-account-setup-in-windows-11/", "note": "Microsoft removing local-account bypass methods" },
         { "factor": "portability", "url": "https://support.microsoft.com/en-us/windows/windows-11-system-requirements-86c11283-ea52-4782-9efd-7674389a7ba3", "note": "Strict hardware requirements exclude older PCs" }
       ]
     },
@@ -151,26 +160,28 @@
       "category": "desktop-os",
       "auditedVersion": "43",
       "auditedAt": "2026-04-13",
-      "rubricVersion": "1.0",
+      "rubricVersion": "2.0",
       "scores": {
-        "generalPurposeComputing": 92,
-        "freedom": 88,
+        "ownerAuthority": 88,
+        "softwareFreedom": 88,
         "privacy": 88,
         "transparency": 82,
+        "developerAutonomy": 95,
+        "appDistributionFreedom": 95,
+        "deviceNeutrality": 92,
         "interoperability": 88,
-        "neutrality": 88,
         "portability": 75
       },
-      "overall": 87,
+      "overall": 89,
       "grade": "A",
-      "summary": "A Red Hat-sponsored, community-governed Linux distribution with a leading-edge release cadence and a strict free-software orientation. Fedora Workstation ships with no default telemetry, no forced accounts, a fully user-controlled bootloader and sudo, and an open build infrastructure on Koji. The score is pulled down modestly by a Secure Boot chain that relies on the Microsoft-signed Shim and by a narrower architecture breadth than fully community-governed distributions.",
+      "summary": "A Red Hat-sponsored, community-governed Linux distribution with a leading-edge release cadence and a strict free-software orientation. Fedora Workstation ships with no default telemetry, no forced accounts, user-controlled boot and root, and an open build infrastructure on Koji. Developer autonomy is near-ideal — anyone can ship RPMs or Flatpaks, no OS-vendor notarisation, no fees — and GNOME Software treats first- and third-party sources as equals. The score is pulled down modestly by reliance on the Microsoft-signed Shim for Secure Boot and by a narrower architecture breadth than community-only distributions.",
       "highlights": [
         "Fully free and open-source by design; third-party proprietary repositories are off by default.",
         "No default telemetry; optional metrics are opt-in and off until the user explicitly enables them.",
         "No user account or internet connection is required to install; installation works offline.",
-        "Root access via sudo is available from first login for the installing user.",
-        "Every package is built on the public Koji infrastructure from publicly available source RPMs.",
-        "GNOME Software treats Flathub and Fedora RPM repositories as equal sources, without vendor steering."
+        "Developers can ship RPM packages, Flatpaks or AppImages without OS-vendor notarisation, approval or fees.",
+        "GNOME Software treats Flathub and Fedora RPM repositories as equal sources, without vendor steering.",
+        "Every package is built on the public Koji infrastructure from publicly available source RPMs."
       ],
       "concerns": [
         "Secure Boot relies on the Microsoft-signed Shim bootloader; replacing the trust chain with user-owned keys is possible but not straightforward.",
@@ -178,13 +189,15 @@
         "Red Hat (IBM) corporate sponsorship shapes roadmap prioritisation, though governance sits with the Fedora Council."
       ],
       "evidence": [
-        { "factor": "generalPurposeComputing", "url": "https://fedoraproject.org/", "note": "User-controlled GRUB2 and sudo; standard Linux model" },
-        { "factor": "freedom", "url": "https://fedoraproject.org/", "note": "Described as 100% Free and Open Source" },
-        { "factor": "freedom", "url": "https://fedoraproject.org/wiki/Licensing", "note": "All packages must meet Fedora licensing guidelines" },
+        { "factor": "ownerAuthority", "url": "https://fedoraproject.org/", "note": "User-controlled GRUB2 and sudo; standard Linux model" },
+        { "factor": "softwareFreedom", "url": "https://fedoraproject.org/", "note": "Described as 100% Free and Open Source" },
+        { "factor": "softwareFreedom", "url": "https://fedoraproject.org/wiki/Licensing", "note": "All packages must meet Fedora licensing guidelines" },
         { "factor": "privacy", "url": "https://fedoraproject.org/wiki/Changes/Telemetry", "note": "Opt-in metrics, off by default at setup" },
         { "factor": "transparency", "url": "https://koji.fedoraproject.org/koji/", "note": "Public package build system and logs" },
+        { "factor": "developerAutonomy", "url": "https://fedoraproject.org/", "note": "Open package ecosystem; RPM and Flatpak supported" },
+        { "factor": "appDistributionFreedom", "url": "https://fedoraproject.org/workstation/", "note": "GNOME Software shows Flathub and RPMs equally" },
+        { "factor": "deviceNeutrality", "url": "https://fedoraproject.org/workstation/", "note": "GNOME default; no preinstalled ads or vendor steering" },
         { "factor": "interoperability", "url": "https://fedoraproject.org/", "note": "Standard Linux stack; Flatpak and RPM integration" },
-        { "factor": "neutrality", "url": "https://fedoraproject.org/workstation/", "note": "GNOME default; no preinstalled ads or vendor steering" },
         { "factor": "portability", "url": "https://fedoraproject.org/", "note": "Official Workstation builds for x86_64 and aarch64" }
       ]
     },
