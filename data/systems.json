@@ -1,7 +1,7 @@
 {
   "version": 1,
   "rubricVersion": "2.0",
-  "updatedAt": "2026-04-13",
+  "updatedAt": "2026-04-15",
   "systems": [
     {
       "slug": "grapheneos",
@@ -562,6 +562,57 @@
       "category": "desktop-os",
       "status": "pending",
       "description": "Long-running, community-governed Linux distribution known for its conservative release policy and the Debian Free Software Guidelines."
+    },
+    {
+      "slug": "e-os",
+      "name": "Murena /e/OS",
+      "category": "mobile-os",
+      "auditedVersion": "3.6",
+      "auditedAt": "2026-04-15",
+      "rubricVersion": "2.0",
+      "scores": {
+        "ownerAuthority": 70,
+        "softwareFreedom": 90,
+        "privacy": 88,
+        "transparency": 62,
+        "developerAutonomy": 95,
+        "appDistributionFreedom": 90,
+        "deviceNeutrality": 88,
+        "interoperability": 80,
+        "portability": 85
+      },
+      "overall": 84,
+      "grade": "A",
+      "summary": "A LineageOS-based Android fork developed by the non-profit e Foundation and commercialised by Murena that ships de-Googled by default, with microG replacing Google Mobile Services and Murena Find replacing Google Search. Advanced Privacy blocks in-app trackers, masks the IP, and spoofs GPS location out of the box, and App Lounge aggregates Google Play, F-Droid, and Progressive Web Apps with a transparent privacy score per listing. Main limitations mirror LineageOS: bootloader re-lock with user-controlled verified-boot keys is device-dependent rather than a first-class feature, and /e/OS does not ship reproducible builds or publish a formal third-party security audit.",
+      "highlights": [
+        "Fully open source under GPLv3+; all source on public GitLab with documented build instructions for official, unofficial and community builds.",
+        "Ships de-Googled by default: microG replaces Google Mobile Services and connectivity checks do not use Google servers.",
+        "Advanced Privacy blocks trackers from Exodus and Adaway lists by default, can spoof GPS location and hide the real IP address, and issues weekly privacy reports.",
+        "App Lounge aggregates Google Play, F-Droid and Progressive Web Apps; anonymous Play Store access works without a Google account for free apps.",
+        "Officially supports 287 smartphones from Google, Samsung, Fairphone, Motorola, Xiaomi, OnePlus, Sony and others.",
+        "Easy Installer flashes supported devices from a web browser over WebUSB without command-line tools."
+      ],
+      "concerns": [
+        "Bootloader re-lock with user-provided verified-boot keys is device-dependent (e.g. Fairphone 4, some Pixels) rather than documented as a first-class /e/OS feature.",
+        "Root access is not shipped on user builds; users must switch to a community build or flash Magisk separately.",
+        "No reproducible build infrastructure and no formal third-party security audit of /e/OS itself.",
+        "Proprietary vendor blobs (firmware, modem, HALs) are inherited per device and cannot be audited.",
+        "Paid apps in App Lounge still require linking a Google account from another device with Google Play installed."
+      ],
+      "evidence": [
+        { "factor": "ownerAuthority", "url": "https://doc.e.foundation/support-topics/root-e-os.html", "note": "Root not in user builds; Magisk path documented" },
+        { "factor": "softwareFreedom", "url": "https://gitlab.e.foundation/e/os/releases", "note": "Public source repo; GPLv3+ licensed" },
+        { "factor": "softwareFreedom", "url": "https://doc.e.foundation/support-topics/build-e", "note": "Official per-device build-from-source instructions" },
+        { "factor": "privacy", "url": "https://e.foundation/e-os/", "note": "microG and non-Google connectivity checks by default" },
+        { "factor": "privacy", "url": "https://doc.e.foundation/support-topics/advanced_privacy", "note": "Advanced Privacy blocks trackers, IP, location" },
+        { "factor": "transparency", "url": "https://gitlab.e.foundation/e", "note": "Public GitLab; all changes as merge requests" },
+        { "factor": "developerAutonomy", "url": "https://doc.e.foundation/support-topics/app_lounge", "note": "Standard Android install; no OS-vendor approval" },
+        { "factor": "appDistributionFreedom", "url": "https://doc.e.foundation/support-topics/app_lounge", "note": "Play, F-Droid and PWA aggregated; anonymous Play access" },
+        { "factor": "deviceNeutrality", "url": "https://doc.e.foundation/support-topics/about-e", "note": "Google search removed; defaults replaceable" },
+        { "factor": "interoperability", "url": "https://doc.e.foundation/support-topics/about-e", "note": "AOSP-compatible APIs; microG compat layer" },
+        { "factor": "portability", "url": "https://doc.e.foundation/devices", "note": "287 officially supported devices across many vendors" },
+        { "factor": "portability", "url": "https://doc.e.foundation/eos-installer", "note": "WebUSB Easy Installer for supported devices" }
+      ]
     }
   ]
 }

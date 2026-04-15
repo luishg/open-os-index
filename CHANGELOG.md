@@ -18,6 +18,7 @@ Scopes:
 
 ## 2026
 
+- 2026-04-15 — audit(e-os): initial v3.6, grade A, overall 84.
 - 2026-04-13 — site: visual iteration v2.1 — removed header mark, rewrote hero copy to reflect the three-axis rubric (owner / ecosystem / technical), grouped factors by axis in the row detail, added grade-band dividers in the ranking, expanded methodology with axis cards and grade legend, typographic polish, focus-visible states, smoother transitions, minimal geometric favicon.
 - 2026-04-13 — audit(harmonyos): initial v5.0, grade F, overall 13.
 - 2026-04-13 — audit(chromeos): initial v146, grade D, overall 26.
