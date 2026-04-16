@@ -1,7 +1,7 @@
 {
   "version": 1,
   "rubricVersion": "2.0",
-  "updatedAt": "2026-04-15",
+  "updatedAt": "2026-04-16",
   "systems": [
     {
       "slug": "grapheneos",
@@ -612,6 +612,115 @@
         { "factor": "interoperability", "url": "https://doc.e.foundation/support-topics/about-e", "note": "AOSP-compatible APIs; microG compat layer" },
         { "factor": "portability", "url": "https://doc.e.foundation/devices", "note": "287 officially supported devices across many vendors" },
         { "factor": "portability", "url": "https://doc.e.foundation/eos-installer", "note": "WebUSB Easy Installer for supported devices" }
+      ]
+    },
+    {
+      "slug": "xiaomi-hyperos",
+      "name": "Xiaomi HyperOS",
+      "category": "mobile-os",
+      "auditedVersion": "3.1",
+      "auditedAt": "2026-04-16",
+      "rubricVersion": "2.0",
+      "scores": {
+        "ownerAuthority": 25,
+        "softwareFreedom": 20,
+        "privacy": 20,
+        "transparency": 30,
+        "developerAutonomy": 75,
+        "appDistributionFreedom": 60,
+        "deviceNeutrality": 40,
+        "interoperability": 70,
+        "portability": 15
+      },
+      "overall": 41,
+      "grade": "C",
+      "summary": "Xiaomi HyperOS is a proprietary Android-based skin shipping on Xiaomi, Redmi and POCO hardware, succeeding MIUI. It inherits the openness of AOSP for developer distribution and file-format interoperability, but layers closed-source system components, pre-installed advertising services and extensive analytics on top. Bootloader unlocking remains possible through Mi Unlock, but 2025 policy changes restrict unlocks to one device per account per year and require Xiaomi account binding, while hardware support is limited to Xiaomi-brand devices.",
+      "highlights": [
+        "Android platform permits direct APK distribution without vendor notarisation.",
+        "Bootloader unlock tool officially provided for most models.",
+        "Xiaomi publishes kernel source at MiCode/Xiaomi_Kernel_OpenSource.",
+        "Open formats and Android intent system support broad interoperability.",
+        "Default launcher, browser and keyboard are technically replaceable."
+      ],
+      "concerns": [
+        "Mi Unlock policy restricts bootloader unlocks to one device per account per year.",
+        "HyperOS framework and system apps are proprietary and not buildable from source.",
+        "MIUI System Ads (MSA) service and Glance lockscreen ads are enabled by default on many SKUs.",
+        "Telemetry is on by default; necessary data transmission continues after opt-out.",
+        "Xiaomi account is strongly steered during setup for Cloud, Find Device and GetApps.",
+        "Hardware support is limited to Xiaomi, Redmi and POCO devices only."
+      ],
+      "evidence": [
+        { "factor": "ownerAuthority", "url": "https://new.c.mi.com/global/post/673501", "note": "Official Xiaomi community bootloader unlock policy" },
+        { "factor": "ownerAuthority", "url": "https://www.androidpolice.com/xiaomi-bootloader-unlock-restricted-to-one-device-per-user-year/", "note": "2025 one-device-per-account-per-year unlock cap" },
+        { "factor": "softwareFreedom", "url": "https://github.com/MiCode/Xiaomi_Kernel_OpenSource", "note": "Kernel-only source publication" },
+        { "factor": "softwareFreedom", "url": "https://en.wikipedia.org/wiki/Xiaomi_HyperOS", "note": "Proprietary HyperOS framework on AOSP base" },
+        { "factor": "privacy", "url": "https://trust.mi.com/docs/miui-privacy-white-paper-global/4/12", "note": "App usage data collection scope" },
+        { "factor": "privacy", "url": "https://www.scss.tcd.ie/Doug.Leith/Android_privacy_report.pdf", "note": "Trinity College Dublin study of MIUI telemetry" },
+        { "factor": "privacy", "url": "https://www.androidauthority.com/xiaomi-privacy-cheap-phone-1118444/", "note": "Data collection practices overview" },
+        { "factor": "transparency", "url": "https://trust.mi.com/docs/miui-privacy-white-paper-global/", "note": "Privacy white paper published" },
+        { "factor": "transparency", "url": "https://therecord.media/lithuanian-government-warns-about-secret-censorship-features-in-xiaomi-phones", "note": "Lithuanian NCSC third-party findings" },
+        { "factor": "developerAutonomy", "url": "https://global.developer.mi.com/document?doc=accountRegistration.becomeADeveloper", "note": "Mi Developer account optional for direct APK" },
+        { "factor": "developerAutonomy", "url": "https://global.developer.mi.com/document?doc=quickStart.quickStartOverlook", "note": "GetApps publishing overview" },
+        { "factor": "appDistributionFreedom", "url": "https://developer.android.com/studio/publish", "note": "Android documents direct distribution outside stores" },
+        { "factor": "appDistributionFreedom", "url": "https://developer.android.com/guide/topics/manifest/uses-permission-element", "note": "Install-unknown-sources permission model" },
+        { "factor": "deviceNeutrality", "url": "https://trust.mi.com/docs/miui-privacy-white-paper-global/", "note": "MSA and Glance default services documented" },
+        { "factor": "interoperability", "url": "https://developer.android.com/guide/components/intents-filters", "note": "Documented intent system enables app interop" },
+        { "factor": "interoperability", "url": "https://developer.android.com/guide/topics/providers/document-provider", "note": "Standard document provider APIs for data exchange" }
+      ]
+    },
+    {
+      "slug": "windows-10",
+      "name": "Windows 10",
+      "category": "desktop-os",
+      "auditedVersion": "22H2",
+      "auditedAt": "2026-04-16",
+      "rubricVersion": "2.0",
+      "scores": {
+        "ownerAuthority": 65,
+        "softwareFreedom": 10,
+        "privacy": 30,
+        "transparency": 35,
+        "developerAutonomy": 80,
+        "appDistributionFreedom": 70,
+        "deviceNeutrality": 45,
+        "interoperability": 60,
+        "portability": 55
+      },
+      "overall": 52,
+      "grade": "C",
+      "summary": "Windows 10 22H2 is Microsoft's final consumer release of Windows 10; mainstream support ended 2025-10-14, with a consumer Extended Security Updates program available through 2026-10-13. The OS is proprietary and closed-source, with mandatory required-diagnostic-data telemetry on Home and Pro editions and built-in advertising surfaces, but it preserves open developer distribution: unsigned .exe and .msi installers can run without notarisation or platform fees, and Secure Boot can be disabled on most OEM hardware. Compared to Windows 11 it imposes fewer hardware attestation and Microsoft-account requirements, though default-app replacement, browser nudging and the Microsoft Store are integrated into the shell.",
+      "highlights": [
+        "Secure Boot can be disabled on OEM hardware; custom keys supported.",
+        "Direct distribution of unsigned .exe and .msi without vendor notarisation.",
+        "No platform fees or developer-account gate for desktop software.",
+        "Official support for x86, x64 and ARM64 architectures.",
+        "Published Open Specifications for SMB, CIFS and OOXML."
+      ],
+      "concerns": [
+        "Closed-source proprietary licence; no build-from-source path.",
+        "Required diagnostic data cannot be set to Off on Home or Pro.",
+        "Mainstream support ended 2025-10-14; security fixes require paid or account-linked ESU.",
+        "Advertising ID, Start menu suggested apps and Lock screen Spotlight on by default.",
+        "SmartScreen labels unsigned installers as Unknown publisher.",
+        "Digital-licence activation ties entitlement to a hardware hash."
+      ],
+      "evidence": [
+        { "factor": "ownerAuthority", "url": "https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/disabling-secure-boot", "note": "OEM requirement to allow Secure Boot disable" },
+        { "factor": "ownerAuthority", "url": "https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/windows-secure-boot-key-creation-and-management-guidance", "note": "Custom Secure Boot key management guidance" },
+        { "factor": "softwareFreedom", "url": "https://learn.microsoft.com/en-us/windows/wsl/opensource", "note": "Only WSL component open-sourced, not Windows" },
+        { "factor": "privacy", "url": "https://learn.microsoft.com/en-us/windows/privacy/configure-windows-diagnostic-data-in-your-organization", "note": "Required level is default; Off only on Enterprise" },
+        { "factor": "privacy", "url": "https://learn.microsoft.com/en-us/windows/privacy/optional-diagnostic-data", "note": "Optional diagnostic data scope on Windows 10" },
+        { "factor": "transparency", "url": "https://learn.microsoft.com/en-us/windows/privacy/configure-windows-diagnostic-data-in-your-organization", "note": "Public documentation of telemetry categories" },
+        { "factor": "transparency", "url": "https://support.microsoft.com/en-us/windows/windows-10-support-has-ended-on-october-14-2025-2ca8b313-1946-43d3-b55c-2b95b107f281", "note": "End-of-support announcement and ESU paths" },
+        { "factor": "developerAutonomy", "url": "https://learn.microsoft.com/en-us/visualstudio/deployment/clickonce-and-authenticode", "note": "Code signing documented as optional" },
+        { "factor": "appDistributionFreedom", "url": "https://support.microsoft.com/en-us/windows/change-default-apps-in-windows-e5d82cad-17d1-c53b-3505-f10a32e1894d", "note": "Users can install and set any app as default" },
+        { "factor": "deviceNeutrality", "url": "https://support.microsoft.com/en-us/windows/change-default-apps-in-windows-e5d82cad-17d1-c53b-3505-f10a32e1894d", "note": "Default-app change documented per file type" },
+        { "factor": "interoperability", "url": "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-smb/f210069c-7086-4dc2-885e-861d837df688", "note": "SMB protocol published under Open Specifications" },
+        { "factor": "interoperability", "url": "https://learn.microsoft.com/en-us/windows/wsl/opensource", "note": "WSL provides POSIX interoperability layer" },
+        { "factor": "portability", "url": "https://learn.microsoft.com/en-us/windows/arm/overview", "note": "Windows 10 supports x86, x64 and ARM64" },
+        { "factor": "portability", "url": "https://support.microsoft.com/en-us/windows/reactivating-windows-after-a-hardware-change-2c0e962a-f04c-145b-6ead-fb3fc72b6665", "note": "Digital licence bound to hardware hash" },
+        { "factor": "privacy", "url": "https://learn.microsoft.com/en-us/windows/whats-new/extended-security-updates", "note": "ESU requires Windows 10 22H2 enrolment" }
       ]
     }
   ]
